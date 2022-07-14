@@ -6,4 +6,7 @@ import { StudentiDBserviceService } from './studenti-dbservice.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {}
+export class AppComponent {
+  cercaStudenti: boolean;
+  gestioneAule: boolean;
+}
