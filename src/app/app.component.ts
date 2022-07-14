@@ -9,4 +9,11 @@ import { StudentiDBserviceService } from './studenti-dbservice.service';
 export class AppComponent {
   cercaStudenti: boolean;
   cercaSezione: boolean;
+  conf;
+  constructor(private http: StudentiDBserviceService) {}
+  aggiungiStudente() {
+    this.http
+      .insertStudente('D', JSON.stringify('Paperina'))
+      .subscribe((val) => (this.conf = val));
+  }
 }
