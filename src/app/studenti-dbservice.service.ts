@@ -8,7 +8,7 @@ export class StudentiDBserviceService {
     'https://eu-central-1.aws.data.mongodb-api.com/app/scuola-ayrnz/endpoint';
 
   constructor(private http: HttpClient) {}
-  public getStudente() {
-    return this.http.get<string>(this.URL + '/cerca');
+  public getStudente(nome) {
+    return this.http.get<string>(this.URL + '/cerca?nome=' + nome);
   }
 }

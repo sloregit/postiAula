@@ -1,2 +1,5 @@
-<button (click)="cercaStudente()">Cerca</button>
+<form>
+  <input type="text" name="nomeStudente" [(ngModel)]="nomeStudente" />
+</form>
+<button (click)="cercaStudente(nomeStudente)">Cerca</button>
 <p>{{ studente }}</p>

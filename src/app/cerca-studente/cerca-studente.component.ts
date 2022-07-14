@@ -8,11 +8,13 @@ import { StudentiDBserviceService } from '../studenti-dbservice.service';
 })
 export class CercaStudenteComponent implements OnInit {
   studente: string;
+  nomeStudente: string;
   constructor(private http: StudentiDBserviceService) {}
-  cercaStudente() {
-    this.http.getStudente().subscribe({
+  cercaStudente(nomeStudente) {
+    this.http.getStudente(nomeStudente).subscribe({
       next: (studente) => {
-        this.studente = studente;
+        let dati = JSON.parse(studente);
+        this.studente = 'nome: ' + dati.nome + ' sezione: ' + dati.sezione;
       },
       error: (e) => {
         console.error(e);
