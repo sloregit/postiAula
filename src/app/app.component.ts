@@ -8,5 +8,5 @@ import { StudentiDBserviceService } from './studenti-dbservice.service';
 })
 export class AppComponent {
   cercaStudenti: boolean;
-  gestioneAule: boolean;
+  cercaSezione: boolean;
 }
