@@ -11,4 +11,7 @@ export class StudentiDBserviceService {
   public getStudente(nome) {
     return this.http.get<string>(this.URL + '/cerca?nome=' + nome);
   }
+  public getSezione(sezione) {
+    return this.http.get<string>(this.URL + '/cercaSezione?sezione=' + sezione);
+  }
 }
