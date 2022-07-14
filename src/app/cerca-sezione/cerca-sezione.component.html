@@ -1,8 +1,11 @@
 <form>
-  <select name="selectSezione" id="selectSezione">
-    <option *ngFor="let sezione; in: arraySezioni" [ngValue]="sezione">
+  <select #selectSezione name="selectSezione" id="selectSezione">
+    <option *ngFor="let sezione of arraySezioni" [ngValue]="sezione">
       {{ sezione }}
     </option>
   </select>
 </form>
-<p>{{ sezione }}</p>
+<button (click)="cercaSezione(selectSezione.value)">Cerca la sezione</button>
+<ul *ngFor="let studente of studenti">
+  <li>{{ studente.nome }}</li>
+</ul>
