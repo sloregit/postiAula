@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { MatDividerModule } from '@angular/material/divider';
     MatButtonModule,
     MatCardModule,
     MatDividerModule,
+    MatSelectModule,
   ],
   declarations: [AppComponent, CercaStudenteComponent, CercaSezioneComponent],
   bootstrap: [AppComponent, CercaStudenteComponent],
