@@ -13,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSelectModule } from '@angular/material/select';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatCardModule,
     MatDividerModule,
     MatSelectModule,
+    MatListModule,
   ],
   declarations: [AppComponent, CercaStudenteComponent, CercaSezioneComponent],
   bootstrap: [AppComponent, CercaStudenteComponent],

@@ -1,11 +1,20 @@
-<form>
-  <select #selectSezione name="selectSezione" id="selectSezione">
-    <option *ngFor="let sezione of arraySezioni" [ngValue]="sezione">
-      {{ sezione }}
-    </option>
-  </select>
-</form>
-<button (click)="cercaSezione(selectSezione.value)">Cerca</button>
-<ul *ngFor="let studente of studenti">
-  <li>{{ studente.nome }}</li>
-</ul>
+<section>
+  <mat-form-field appearance="fill">
+    <mat-label>Cerca una sezione</mat-label>
+    <mat-select #selectSezione>
+      <mat-option [disabled]="true">Sezione</mat-option>
+      <mat-option *ngFor="let sezione of arraySezioni" [value]="sezione">
+        {{ sezione }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-raised-button (click)="cercaSezione(selectSezione.value)">
+    Cerca
+  </button>
+  <mat-selection-list #studentiList [multiple]="false">
+    <mat-list-option *ngFor="let studente of studenti" [value]="studente.nome">
+      {{ studente.nome }}
+    </mat-list-option>
+  </mat-selection-list>
+  <p>{{ studentiList.selectedOptions.selected[0]?.value }}</p>
+</section>
