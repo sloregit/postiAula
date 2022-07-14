@@ -9,6 +9,6 @@ export class StudentiDBserviceService {
 
   constructor(private http: HttpClient) {}
   public getStudente() {
-    return this.http.get<string>(this.URL + 'get?cerca');
+    return this.http.get<string>(this.URL + '/cerca');
   }
 }
