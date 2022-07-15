@@ -19,4 +19,7 @@ export class StudentiDBserviceService {
   public insertStudente(body) {
     return this.http.post<string>(this.URL + '/aggiungiStudente?', body);
   }
+  public cercaTutti() {
+    return this.http.get<string>(this.URL + '/cercaTutti');
+  }
 }
