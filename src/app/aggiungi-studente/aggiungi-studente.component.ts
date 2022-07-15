@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { DateAdapter } from '@angular/material/core';
 import { StudentiDBserviceService } from '../studenti-dbservice.service';
 
 @Component({
@@ -16,7 +17,9 @@ export class AggiungiStudenteComponent {
     console.log(nome, cognome, anno, sezione);
   }
   foo3($event) {
-    console.log($event);
+    let a = new Date($event).toUTCString();
+    console.log(typeof a);
+    console.log(a);
   }
   aggiungiStudente() {
     let doc = {

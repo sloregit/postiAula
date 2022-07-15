@@ -46,7 +46,7 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
     CercaSezioneComponent,
     AggiungiStudenteComponent,
   ],
-  bootstrap: [AppComponent, CercaStudenteComponent],
+  bootstrap: [AppComponent],
   providers: [
     StudentiDBserviceService,
     { provide: MAT_DATE_LOCALE, useValue: 'it-it' },
