@@ -24,6 +24,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { DialogComponent } from './dialog/dialog.component';
 import { AulaComponent } from './aula/aula.component';
 import { AggiungiClasseComponent } from './aggiungi-classe/aggiungi-classe.component';
+import { CercaTuttiComponent } from './cerca-tutti/cerca-tutti.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   imports: [
@@ -44,6 +46,7 @@ import { AggiungiClasseComponent } from './aggiungi-classe/aggiungi-classe.compo
     MatDatepickerModule,
     MatNativeDateModule,
     MatDialogModule,
+    MatExpansionModule,
   ],
   declarations: [
     AppComponent,
