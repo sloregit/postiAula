@@ -20,7 +20,7 @@
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Data di nascita</mat-label>
-      <input matInput [matDatepicker]="anno" />
+      <input (dateInput)="foo3($event.value)" matInput [matDatepicker]="anno" />
       <mat-hint>MM/DD/YYYY</mat-hint>
       <mat-datepicker-toggle matSuffix [for]="anno"></mat-datepicker-toggle>
       <mat-datepicker #anno></mat-datepicker>

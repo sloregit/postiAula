@@ -15,6 +15,9 @@ export class AggiungiStudenteComponent {
   foo(nome, cognome, anno, sezione) {
     console.log(nome, cognome, anno, sezione);
   }
+  foo3($event) {
+    console.log($event);
+  }
   aggiungiStudente() {
     let doc = {
       nome: 'Ariel',
