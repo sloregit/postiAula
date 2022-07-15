@@ -48,6 +48,7 @@ import { DialogComponent } from './dialog/dialog.component';
     CercaStudenteComponent,
     CercaSezioneComponent,
     AggiungiStudenteComponent,
+    DialogComponent,
   ],
   bootstrap: [AppComponent],
   providers: [
