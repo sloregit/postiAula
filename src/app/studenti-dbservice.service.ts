@@ -16,10 +16,7 @@ export class StudentiDBserviceService {
   public getSezione(sezione) {
     return this.http.get<string>(this.URL + '/cercaSezione?sezione=' + sezione);
   }
-  public insertStudente(sezione, nome) {
-    return this.http.post<string>(
-      this.URL + '/aggiungiStudente?sezione=' + sezione,
-      nome
-    );
+  public insertStudente(body) {
+    return this.http.post<string>(this.URL + '/aggiungiStudente?', body);
   }
 }

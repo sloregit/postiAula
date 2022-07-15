@@ -12,8 +12,14 @@ export class AppComponent {
   conf;
   constructor(private http: StudentiDBserviceService) {}
   aggiungiStudente() {
-    this.http
-      .insertStudente('D', JSON.stringify('Paperina'))
-      .subscribe((val) => (this.conf = val));
+    let doc = {
+      nome: 'Ariel',
+      cognome: 'Nettuno',
+      sezione: 'F',
+      nascita: '22/08/1990',
+    };
+    this.http.insertStudente(JSON.stringify(doc)).subscribe((val) => {
+      (this.conf = val), console.log(val);
+    });
   }
 }

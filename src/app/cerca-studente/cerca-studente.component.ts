@@ -14,7 +14,14 @@ export class CercaStudenteComponent implements OnInit {
     this.http.getStudente(nomeStudente).subscribe({
       next: (studente) => {
         let dati = JSON.parse(studente);
-        this.studente = 'nome: ' + dati.nome + ' sezione: ' + dati.sezione;
+        console.log(dati);
+        this.studente =
+          'nome: ' +
+          dati.nome +
+          ' sezione: ' +
+          dati.sezione +
+          ' nato: ' +
+          dati.nato;
       },
       error: (e) => {
         console.error(e);
