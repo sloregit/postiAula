@@ -1,9 +1,10 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { StudentiDBserviceService } from '../studenti-dbservice.service';
 import { Studente } from '../shared-class';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
 import { FormControl, Validators } from '@angular/forms';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-aggiungi-studente',
@@ -18,11 +19,11 @@ export class AggiungiStudenteComponent {
   newStudente: Studente;
   conferma: boolean;
   @Input() arraySezioni: Array<string>;
-  @Output() newStudenteEmitter = new EventEmitter<Studente>();
   nome = new FormControl('', [Validators.required]);
   cognome = new FormControl('', [Validators.required]);
   data = new FormControl('', [Validators.required]);
   sezione = new FormControl('', [Validators.required]);
+  compleatato: string;
   constructor(
     private http: StudentiDBserviceService,
     private dialog: MatDialog
@@ -30,22 +31,10 @@ export class AggiungiStudenteComponent {
     this.dataMax = new Date();
   }
 
-  openDialog() {
-    const dialogConfig = new MatDialogConfig();
-
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-
-    dialogConfig.data = this.newStudente;
-
-    const dialogRef = this.dialog.open(DialogComponent, dialogConfig);
-
-    dialogRef
-      .afterClosed()
-      .subscribe((data) => console.log('Dialog output:', data));
-  }
-
-  ///////////////
+  //Una volta inseriti i campi e confermato si apre il dialog per la conferma
+  //validator ritorna {errors:true} se trova errori =>!this.daValidare.errors è tutto ok
+  //Il dialog si apre con open(), afterClose() è un Observable
+  //Studente è in shared-class
   aggiungiStudente(nome, cognome, nascita, sezione) {
     try {
       if (
@@ -60,31 +49,24 @@ export class AggiungiStudenteComponent {
         dialogConfig.autoFocus = true;
         dialogConfig.data = { studente: this.newStudente };
         const dialogRef = this.dialog.open(DialogComponent, dialogConfig);
-        dialogRef.afterClosed().subscribe((data) => (this.conferma = data));
-        if (this.conferma) {
-          console.log('OKAggiungi');
-        }
+        const close = dialogRef
+          .afterClosed()
+          .pipe(take(1))
+          .subscribe((val) => {
+            if (val === true) {
+              this.http
+                .insertStudente(JSON.stringify(this.newStudente))
+                .subscribe((val) => {
+                  (this.compleatato = val), console.log(val);
+                });
+            }
+          });
       }
     } catch (e) {}
   }
-
-  /////////
-  indietro() {
-    this.conferma = false;
-  }
+  //La data era in formato YY/MM/DD, toLocaleString() per averla italiana
+  //split alla virgola {YY/MM/DD, 00:00:00} per eliminare l'ora
   pickData($event) {
     this.nascita = new Date($event).toLocaleString().split(',', 1).toString();
-    console.log(this.nascita);
-  } /*
-  aggiungiStudente() {
-    let doc = {
-      nome: 'Ariel',
-      cognome: 'Nettuno',
-      sezione: 'F',
-      nascita: '22/08/1990',
-    };
-    this.http.insertStudente(JSON.stringify(doc)).subscribe((val) => {
-      (this.conf = val), console.log(val);
-    });
-  }*/
+  }
 }
