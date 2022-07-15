@@ -36,13 +36,19 @@
   </mat-toolbar-row>
 </mat-toolbar>
 <mat-card>
-  <div *ngIf="cercaStudenti">
-    <app-cerca-studente></app-cerca-studente>
-  </div>
+  <section *ngIf="cercaStudenti">
+    <mat-card>
+      <app-cerca-studente></app-cerca-studente>
+    </mat-card>
+    <mat-divider></mat-divider>
+    <mat-card>
+      <app-aggiungi-studente
+        [arraySezioni]="arraySezioni"
+      ></app-aggiungi-studente>
+    </mat-card>
+  </section>
   <div *ngIf="cercaSezione">
-    <app-cerca-sezione></app-cerca-sezione>
+    <app-cerca-sezione [arraySezioni]="arraySezioni"></app-cerca-sezione>
   </div>
   <div></div>
 </mat-card>
-<button (click)="aggiungiStudente()">Add</button>
-<p>{{ conf }}</p>

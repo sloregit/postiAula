@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { StudentiDBserviceService } from '../studenti-dbservice.service';
 export class Studente {
   nome: string;
@@ -18,12 +18,10 @@ export class Aula {
   styleUrls: ['./cerca-sezione.component.css'],
 })
 export class CercaSezioneComponent implements OnInit {
-  arraySezioni: Array<string>;
+  @Input() arraySezioni: Array<string>;
   sezioneResponse: Array<Studente>;
   studenti = [];
-  constructor(private http: StudentiDBserviceService) {
-    this.arraySezioni = ['A', 'B', 'C', 'D', 'E', 'F'];
-  }
+  constructor(private http: StudentiDBserviceService) {}
   cercaSezione(sezione) {
     this.studenti = [];
     this.http.getSezione(sezione).subscribe({

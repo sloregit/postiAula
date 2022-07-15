@@ -1,0 +1,44 @@
+<section>
+  <button (click)="aggiungiStudente()">Add</button>
+  <p>{{ conf }}</p>
+</section>
+<section>
+  <form class="example-form">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Nome</mat-label>
+      <input #nome matInput type="text" name="nome" placeholder="Nome" />
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Cognome</mat-label>
+      <input
+        #cognome
+        matInput
+        type="text"
+        name="cognome"
+        placeholder="Cognome"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Data di nascita</mat-label>
+      <input matInput [matDatepicker]="anno" />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="anno"></mat-datepicker-toggle>
+      <mat-datepicker #anno></mat-datepicker>
+    </mat-form-field>
+  </form>
+  <mat-form-field appearance="fill">
+    <mat-label>Sezione</mat-label>
+    <mat-select #sezione>
+      <mat-option [disabled]="true">Sezione</mat-option>
+      <mat-option *ngFor="let sezione of arraySezioni" [value]="sezione">
+        {{ sezione }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button
+    mat-raised-button
+    (click)="foo(nome.value, cognome.value, anno, sezione.value)"
+  >
+    Cerca
+  </button>
+</section>

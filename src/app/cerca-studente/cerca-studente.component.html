@@ -1,20 +1,18 @@
 <section>
-  <mat-card>
-    <form class="example-form">
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Studente</mat-label>
-        <input
-          #nomeStudente
-          matInput
-          type="text"
-          name="nomeStudente"
-          placeholder="Inserisci il nome"
-        />
-      </mat-form-field>
-    </form>
-    <button mat-raised-button (click)="cercaStudente(nomeStudente.value)">
-      Cerca
-    </button>
-    <p>{{ studente }}</p>
-  </mat-card>
+  <form class="example-form">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Studente</mat-label>
+      <input
+        #nomeStudente
+        matInput
+        type="text"
+        name="nomeStudente"
+        placeholder="Inserisci il nome"
+      />
+    </mat-form-field>
+  </form>
+  <button mat-raised-button (click)="cercaStudente(nomeStudente.value)">
+    Cerca
+  </button>
+  <p>{{ studente }}</p>
 </section>

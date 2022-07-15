@@ -9,17 +9,9 @@ import { StudentiDBserviceService } from './studenti-dbservice.service';
 export class AppComponent {
   cercaStudenti: boolean;
   cercaSezione: boolean;
+  arraySezioni: Array<string>;
   conf;
-  constructor(private http: StudentiDBserviceService) {}
-  aggiungiStudente() {
-    let doc = {
-      nome: 'Ariel',
-      cognome: 'Nettuno',
-      sezione: 'F',
-      nascita: '22/08/1990',
-    };
-    this.http.insertStudente(JSON.stringify(doc)).subscribe((val) => {
-      (this.conf = val), console.log(val);
-    });
+  constructor(private http: StudentiDBserviceService) {
+    this.arraySezioni = ['A', 'B', 'C', 'D', 'E', 'F'];
   }
 }
