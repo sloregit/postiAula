@@ -10,6 +10,7 @@
         placeholder="Inserisci il nome"
       />
     </mat-form-field>
+    <p mat-card-content *ngIf="errore">{{ errore }}</p>
   </form>
   <button mat-raised-button (click)="cercaStudente(nomeStudente.value)">
     Cerca

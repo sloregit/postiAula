@@ -9,22 +9,30 @@ import { StudentiDBserviceService } from '../studenti-dbservice.service';
 export class CercaStudenteComponent implements OnInit {
   studente: string;
   nomeStudente: string;
+  errore: string;
   constructor(private http: StudentiDBserviceService) {}
   cercaStudente(nomeStudente) {
     this.http.getStudente(nomeStudente).subscribe({
       next: (studente) => {
-        let dati = JSON.parse(studente);
-        console.log(dati);
-        this.studente =
-          'nome: ' +
-          dati.nome +
-          ' sezione: ' +
-          dati.sezione +
-          ' nato: ' +
-          dati.nato;
+        console.log(studente);
+        try {
+          let dati = JSON.parse(studente);
+          this.studente =
+            'nome: ' +
+            dati.nome +
+            ' cognome: ' +
+            dati.cognome +
+            ' nato: ' +
+            dati.nascita +
+            ' sezione: ' +
+            dati.sezione;
+        } catch (e) {
+          this.errore = e.toString();
+        }
       },
       error: (e) => {
-        console.error(e);
+        console.error('cercastudente: ' + e.toString());
+        this.errore = 'Studente non trovato';
       },
     });
   }
