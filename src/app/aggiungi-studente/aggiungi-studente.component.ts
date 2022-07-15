@@ -13,7 +13,7 @@ export class AggiungiStudenteComponent {
   cercaStudenti: boolean;
   cercaSezione: boolean;
   dataMax: Date;
-  anno: string;
+  nascita: string;
   newStudente: Studente;
   conferma: boolean;
   @Input() arraySezioni: Array<string>;
@@ -32,10 +32,7 @@ export class AggiungiStudenteComponent {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
 
-    dialogConfig.data = {
-      id: 1,
-      title: 'Angular For Beginners',
-    };
+    dialogConfig.data = this.newStudente;
 
     const dialogRef = this.dialog.open(DialogComponent, dialogConfig);
 
@@ -49,12 +46,26 @@ export class AggiungiStudenteComponent {
     this.newStudente = new Studente(nome, cognome, nascita, sezione);
     this.conferma = true;
     console.log(this.newStudente);
+
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+
+    dialogConfig.data = { studente: this.newStudente };
+
+    const dialogRef = this.dialog.open(DialogComponent, dialogConfig);
+    dialogRef
+      .afterClosed()
+      .subscribe((data) => console.log('Dialog output:', data));
   }
+
+  /////////
   indietro() {
     this.conferma = false;
   }
   pickData($event) {
-    this.anno = new Date($event).toLocaleString().slice(0, 8);
+    this.nascita = new Date($event).toLocaleString().slice(0, 8);
   }
   aggiungiStudente() {
     let doc = {
