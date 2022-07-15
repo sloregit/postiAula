@@ -3,6 +3,7 @@ import { StudentiDBserviceService } from '../studenti-dbservice.service';
 import { Studente } from '../shared-class';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-aggiungi-studente',
@@ -18,7 +19,10 @@ export class AggiungiStudenteComponent {
   conferma: boolean;
   @Input() arraySezioni: Array<string>;
   @Output() newStudenteEmitter = new EventEmitter<Studente>();
-  conf;
+  nome = new FormControl('', [Validators.required]);
+  cognome = new FormControl('', [Validators.required]);
+  data = new FormControl('', [Validators.required]);
+  sezione = new FormControl('', [Validators.required]);
   constructor(
     private http: StudentiDBserviceService,
     private dialog: MatDialog
@@ -43,21 +47,19 @@ export class AggiungiStudenteComponent {
 
   ///////////////
   foo(nome, cognome, nascita, sezione) {
-    this.newStudente = new Studente(nome, cognome, nascita, sezione);
-    this.conferma = true;
-    console.log(this.newStudente);
-
-    const dialogConfig = new MatDialogConfig();
-
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-
-    dialogConfig.data = { studente: this.newStudente };
-
-    const dialogRef = this.dialog.open(DialogComponent, dialogConfig);
-    dialogRef
-      .afterClosed()
-      .subscribe((data) => console.log('Dialog output:', data));
+    try {
+      if (this.nome && this.cognome && this.data && this.sezione) {
+        this.newStudente = new Studente(nome, cognome, nascita, sezione);
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = true;
+        dialogConfig.data = { studente: this.newStudente };
+        const dialogRef = this.dialog.open(DialogComponent, dialogConfig);
+        dialogRef
+          .afterClosed()
+          .subscribe((data) => console.log('Dialog output:', data));
+      }
+    } catch (e) {}
   }
 
   /////////
@@ -66,7 +68,7 @@ export class AggiungiStudenteComponent {
   }
   pickData($event) {
     this.nascita = new Date($event).toLocaleString().slice(0, 8);
-  }
+  } /*
   aggiungiStudente() {
     let doc = {
       nome: 'Ariel',
@@ -77,5 +79,5 @@ export class AggiungiStudenteComponent {
     this.http.insertStudente(JSON.stringify(doc)).subscribe((val) => {
       (this.conf = val), console.log(val);
     });
-  }
+  }*/
 }

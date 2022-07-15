@@ -26,6 +26,6 @@ export class DialogComponent implements OnInit {
     this.dialogRef.close();
   }
   ngOnInit() {
-    console.log(this.data.studente);
+    console.log(this.data);
   }
 }

@@ -1,21 +1,25 @@
 <section>
-  <button (click)="aggiungiStudente()">Add</button>
-  <p>{{ conf }}</p>
-</section>
-<section>
   <form class="example-form">
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Nome</mat-label>
-      <input #nome matInput type="text" name="nome" placeholder="Nome" />
+      <input
+        matInput
+        id="nome"
+        type="text"
+        name="nome"
+        placeholder="Nome"
+        [formControl]="nome"
+      />
     </mat-form-field>
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Cognome</mat-label>
       <input
-        #cognome
+        id="cognome"
         matInput
         type="text"
         name="cognome"
         placeholder="Cognome"
+        [formControl]="cognome"
       />
     </mat-form-field>
     <mat-form-field appearance="fill">
@@ -25,6 +29,8 @@
         [matDatepicker]="picker"
         [max]="dataMax"
         (dateInput)="pickData($event.value)"
+        t
+        [formControl]="data"
       />
       <mat-hint>DD/MM/YYYY</mat-hint>
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -33,14 +39,17 @@
   </form>
   <mat-form-field appearance="fill">
     <mat-label>Sezione</mat-label>
-    <mat-select #sezione>
+    <mat-select id="sezione" [formControl]="sezione">
       <mat-option [disabled]="true">Sezione</mat-option>
       <mat-option *ngFor="let sezione of arraySezioni" [value]="sezione">
         {{ sezione }}
       </mat-option>
     </mat-select>
   </mat-form-field>
-  <button mat-raised-button (click)="foo(nome, cognome, nascita, sezione)">
+  <button
+    mat-raised-button
+    (click)="foo(nome.value, cognome.value, nascita, sezione.value)"
+  >
     Aggiungi
   </button>
 </section>
