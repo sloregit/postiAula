@@ -1,9 +1,14 @@
 <h4 mat-dialog-title>Riepilogo</h4>
 <mat-dialog-content>
-  <p>sottotitolo</p>
+  <p mat-dialog-content>Nome: {{ studente.nome }}</p>
+  <p mat-dialog-content>Cognome: {{ studente.cognome }}</p>
+  <p mat-dialog-content>Data di nascita: {{ studente.nascita }}</p>
+  <p mat-dialog-content>Sezione: {{ studente.sezione }}</p>
 </mat-dialog-content>
 
 <mat-dialog-actions>
-  <button class="mat-raised-button" (click)="close()">Close</button>
-  <button class="mat-raised-button mat-primary" (click)="save()">Save</button>
+  <button class="mat-raised-button" (click)="close()">Annulla</button>
+  <button class="mat-raised-button mat-primary" (click)="save()">
+    Conferma
+  </button>
 </mat-dialog-actions>

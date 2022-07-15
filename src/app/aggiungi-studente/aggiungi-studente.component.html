@@ -48,7 +48,9 @@
   </mat-form-field>
   <button
     mat-raised-button
-    (click)="foo(nome.value, cognome.value, nascita, sezione.value)"
+    (click)="
+      aggiungiStudente(nome.value, cognome.value, nascita, sezione.value)
+    "
   >
     Aggiungi
   </button>

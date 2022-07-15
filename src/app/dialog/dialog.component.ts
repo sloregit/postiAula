@@ -7,25 +7,23 @@ import { Inject } from '@angular/core';
   templateUrl: './dialog.component.html',
   styleUrls: ['./dialog.component.css'],
 })
-export class DialogComponent implements OnInit {
+export class DialogComponent {
   form;
   description: string;
-  data;
+  studente;
+
   constructor(
     private dialogRef: MatDialogRef<DialogComponent>,
     @Inject(MAT_DIALOG_DATA) data
   ) {
-    this.data = data;
+    this.studente = data.studente;
   }
 
   save() {
-    this.dialogRef.close();
+    this.dialogRef.close(true);
   }
 
   close() {
-    this.dialogRef.close();
-  }
-  ngOnInit() {
-    console.log(this.data);
+    this.dialogRef.close(false);
   }
 }

@@ -46,18 +46,24 @@ export class AggiungiStudenteComponent {
   }
 
   ///////////////
-  foo(nome, cognome, nascita, sezione) {
+  aggiungiStudente(nome, cognome, nascita, sezione) {
     try {
-      if (this.nome && this.cognome && this.data && this.sezione) {
+      if (
+        !this.nome.errors &&
+        !this.cognome.errors &&
+        !this.data.errors &&
+        !this.sezione.errors
+      ) {
         this.newStudente = new Studente(nome, cognome, nascita, sezione);
         const dialogConfig = new MatDialogConfig();
         dialogConfig.disableClose = true;
         dialogConfig.autoFocus = true;
         dialogConfig.data = { studente: this.newStudente };
         const dialogRef = this.dialog.open(DialogComponent, dialogConfig);
-        dialogRef
-          .afterClosed()
-          .subscribe((data) => console.log('Dialog output:', data));
+        dialogRef.afterClosed().subscribe((data) => (this.conferma = data));
+        if (this.conferma) {
+          console.log('OKAggiungi');
+        }
       }
     } catch (e) {}
   }
@@ -67,7 +73,8 @@ export class AggiungiStudenteComponent {
     this.conferma = false;
   }
   pickData($event) {
-    this.nascita = new Date($event).toLocaleString().slice(0, 8);
+    this.nascita = new Date($event).toLocaleString().split(',', 1).toString();
+    console.log(this.nascita);
   } /*
   aggiungiStudente() {
     let doc = {
