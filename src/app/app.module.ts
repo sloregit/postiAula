@@ -23,6 +23,7 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogComponent } from './dialog/dialog.component';
 import { AulaComponent } from './aula/aula.component';
+import { AggiungiClasseComponent } from './aggiungi-classe/aggiungi-classe.component';
 
 @NgModule({
   imports: [
@@ -50,6 +51,7 @@ import { AulaComponent } from './aula/aula.component';
     AggiungiStudenteComponent,
     DialogComponent,
     AulaComponent,
+    AggiungiClasseComponent,
   ],
   bootstrap: [AppComponent],
   providers: [
