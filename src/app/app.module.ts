@@ -49,7 +49,7 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
   bootstrap: [AppComponent, CercaStudenteComponent],
   providers: [
     StudentiDBserviceService,
-    { provide: MAT_DATE_LOCALE, useValue: 'it-IT' },
+    { provide: MAT_DATE_LOCALE, useValue: 'it-it' },
   ],
 })
 export class AppModule {}
