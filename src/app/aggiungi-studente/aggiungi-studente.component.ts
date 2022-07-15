@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { StudentiDBserviceService } from '../studenti-dbservice.service';
 import { Studente } from '../shared-class';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
@@ -17,6 +17,7 @@ export class AggiungiStudenteComponent {
   newStudente: Studente;
   conferma: boolean;
   @Input() arraySezioni: Array<string>;
+  @Output() newStudenteEmitter = new EventEmitter<Studente>();
   conf;
   constructor(
     private http: StudentiDBserviceService,
@@ -35,8 +36,6 @@ export class AggiungiStudenteComponent {
       id: 1,
       title: 'Angular For Beginners',
     };
-
-    this.dialog.open(DialogComponent, dialogConfig);
 
     const dialogRef = this.dialog.open(DialogComponent, dialogConfig);
 

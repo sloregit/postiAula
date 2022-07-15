@@ -13,10 +13,10 @@ export class DialogComponent {
   constructor(private dialogRef: MatDialogRef<DialogComponent>) {}
 
   save() {
-    this.dialogRef.close(this.form.value);
+    this.dialogRef.close();
   }
 
   close() {
-    this.dialogRef.close();
+    this.dialogRef.close(this);
   }
 }
