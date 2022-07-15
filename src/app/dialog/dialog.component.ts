@@ -1,15 +1,22 @@
 import { Component, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dialog',
   templateUrl: './dialog.component.html',
-  styleUrls: ['./dialog.component.css']
+  styleUrls: ['./dialog.component.css'],
 })
-export class DialogComponent implements OnInit {
+export class DialogComponent {
+  form;
+  description: string;
 
-  constructor() { }
+  constructor(private dialogRef: MatDialogRef<DialogComponent>) {}
 
-  ngOnInit() {
+  save() {
+    this.dialogRef.close(this.form.value);
   }
 
+  close() {
+    this.dialogRef.close();
+  }
 }
