@@ -50,6 +50,7 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
   providers: [
     StudentiDBserviceService,
     { provide: MAT_DATE_LOCALE, useValue: 'it-it' },
+    { provide: MatDatepickerModule, useValue: { useUtc: true } },
   ],
 })
 export class AppModule {}
