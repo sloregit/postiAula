@@ -17,3 +17,23 @@
   </button>
   <p>{{ studente }}</p>
 </section>
+<section>
+  <mat-form-field appearance="fill">
+    <mat-label>Cerca una sezione</mat-label>
+    <mat-select #selectSezione>
+      <mat-option [disabled]="true">Sezione</mat-option>
+      <mat-option *ngFor="let sezione of arraySezioni" [value]="sezione">
+        {{ sezione }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-raised-button (click)="cercaSezione(selectSezione.value)">
+    Cerca
+  </button>
+  <mat-selection-list #studentiList [multiple]="false">
+    <mat-list-option *ngFor="let studente of studenti" [value]="studente">
+      {{ studente.nome }}
+    </mat-list-option>
+  </mat-selection-list>
+  <p>{{ studentiList.selectedOptions.selected[0]?.value.nome }}</p>
+</section>

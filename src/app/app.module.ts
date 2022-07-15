@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { StudentiDBserviceService } from './studenti-dbservice.service';
 import { CercaStudenteComponent } from './cerca-studente/cerca-studente.component';
 import { HttpClientModule } from '@angular/common/http';
-import { CercaSezioneComponent } from './cerca-sezione/cerca-sezione.component';
 //Angular Material
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -23,6 +22,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogComponent } from './dialog/dialog.component';
+import { AulaComponent } from './aula/aula.component';
 
 @NgModule({
   imports: [
@@ -47,9 +47,9 @@ import { DialogComponent } from './dialog/dialog.component';
   declarations: [
     AppComponent,
     CercaStudenteComponent,
-    CercaSezioneComponent,
     AggiungiStudenteComponent,
     DialogComponent,
+    AulaComponent,
   ],
   bootstrap: [AppComponent],
   providers: [

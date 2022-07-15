@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { StudentiDBserviceService } from '../studenti-dbservice.service';
+import { Studente } from '../shared-class';
 
 @Component({
   selector: 'app-cerca-studente',
@@ -10,6 +11,9 @@ export class CercaStudenteComponent implements OnInit {
   studente: string;
   nomeStudente: string;
   errore: string;
+  @Input() arraySezioni: Array<string>;
+  sezioneResponse: Array<Studente>;
+  studenti = [];
   constructor(private http: StudentiDBserviceService) {}
   cercaStudente(nomeStudente) {
     this.http.getStudente(nomeStudente).subscribe({
@@ -33,6 +37,29 @@ export class CercaStudenteComponent implements OnInit {
       error: (e) => {
         console.error('cercastudente: ' + e.toString());
         this.errore = 'Studente non trovato';
+      },
+    });
+  }
+
+  cercaSezione(sezione) {
+    this.studenti = [];
+    this.http.getSezione(sezione).subscribe({
+      next: (res) => {
+        this.sezioneResponse = JSON.parse(res);
+        this.sezioneResponse.map((studente) => {
+          this.studenti.push(
+            new Studente(
+              studente.nome,
+              studente.sezione,
+              studente.nascita,
+              studente.sezione
+            )
+          );
+          console.log(this.studenti);
+        });
+      },
+      error: (e) => {
+        console.error(e);
       },
     });
   }

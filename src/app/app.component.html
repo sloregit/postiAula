@@ -38,13 +38,11 @@
 <mat-card>
   <section *ngIf="cercaStudenti">
     <mat-card>
-      <app-cerca-studente></app-cerca-studente>
+      <app-cerca-studente [arraySezioni]="arraySezioni"></app-cerca-studente>
     </mat-card>
     <mat-divider></mat-divider>
     <mat-card>
-      <app-aggiungi-studente
-        [arraySezioni]="arraySezioni"
-      ></app-aggiungi-studente>
+      <app-aggiungi-studente></app-aggiungi-studente>
     </mat-card>
   </section>
   <div *ngIf="cercaSezione">

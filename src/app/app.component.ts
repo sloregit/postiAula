@@ -10,8 +10,15 @@ export class AppComponent {
   cercaStudenti: boolean;
   cercaSezione: boolean;
   arraySezioni: Array<string>;
-  conf;
+  parRisultati;
   constructor(private http: StudentiDBserviceService) {
     this.arraySezioni = ['A', 'B', 'C', 'D', 'E', 'F'];
+  }
+  foo() {
+    this.http.cercaTutti().subscribe((val) => {
+      const collection = JSON.parse(val);
+      this.parRisultati = val;
+      console.log(val);
+    });
   }
 }
