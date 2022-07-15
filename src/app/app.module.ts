@@ -20,7 +20,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { AggiungiStudenteComponent } from './aggiungi-studente/aggiungi-studente.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-//import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 @NgModule({
   imports: [
@@ -49,7 +49,7 @@ import { MatNativeDateModule } from '@angular/material/core';
   bootstrap: [AppComponent, CercaStudenteComponent],
   providers: [
     StudentiDBserviceService,
-    //{ provide: MAT_DATE_LOCALE, useValue: 'it-IT' },
+    { provide: MAT_DATE_LOCALE, useValue: 'it-IT' },
   ],
 })
 export class AppModule {}
