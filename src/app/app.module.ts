@@ -20,10 +20,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { AggiungiStudenteComponent } from './aggiungi-studente/aggiungi-studente.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { MAT_DATE_FORMATS } from '@angular/material/core';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
-
-import { MY_DATE_FORMATS } from './formato-data-custom';
 
 @NgModule({
   imports: [
