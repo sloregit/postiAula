@@ -23,7 +23,8 @@
       <input
         matInput
         [matDatepicker]="picker"
-        (dateInput)="foo3($event.value)"
+        [max]="dataMax"
+        (dateInput)="pickData($event.value)"
       />
       <mat-hint>DD/MM/YYYY</mat-hint>
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -39,10 +40,5 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
-  <button
-    mat-raised-button
-    (click)="foo(nome.value, cognome.value, picker, sezione.value)"
-  >
-    Cerca
-  </button>
+  <button mat-raised-button (click)="openDialog()">Aggiungi</button>
 </section>

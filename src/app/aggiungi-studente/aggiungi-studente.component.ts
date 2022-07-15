@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { DateAdapter } from '@angular/material/core';
 import { StudentiDBserviceService } from '../studenti-dbservice.service';
+import { Studente } from '../shared-class';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-aggiungi-studente',
@@ -10,16 +12,39 @@ import { StudentiDBserviceService } from '../studenti-dbservice.service';
 export class AggiungiStudenteComponent {
   cercaStudenti: boolean;
   cercaSezione: boolean;
+  dataMax: Date;
+  anno: string;
+  newStudente: Studente;
+  conferma: boolean;
   @Input() arraySezioni: Array<string>;
   conf;
-  constructor(private http: StudentiDBserviceService) {}
-  foo(nome, cognome, anno, sezione) {
-    console.log(nome, cognome, anno, sezione);
+  constructor(
+    private http: StudentiDBserviceService,
+    private dialog: MatDialog
+  ) {
+    this.dataMax = new Date();
   }
-  foo3($event) {
-    let a = new Date($event).toUTCString();
-    console.log(typeof a);
-    console.log(a);
+
+  openDialog() {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+
+    this.dialog.open(DialogComponent, dialogConfig);
+  }
+
+  ///////////////
+  foo(nome, cognome, nascita, sezione) {
+    this.newStudente = new Studente(nome, cognome, nascita, sezione);
+    this.conferma = true;
+    console.log(this.newStudente);
+  }
+  indietro() {
+    this.conferma = false;
+  }
+  pickData($event) {
+    this.anno = new Date($event).toLocaleString().slice(0, 8);
   }
   aggiungiStudente() {
     let doc = {

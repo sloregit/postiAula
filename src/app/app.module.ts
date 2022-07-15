@@ -21,6 +21,8 @@ import { AggiungiStudenteComponent } from './aggiungi-studente/aggiungi-studente
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogComponent } from './dialog/dialog.component';
 
 @NgModule({
   imports: [
@@ -39,6 +41,7 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
     MatMenuModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatDialogModule,
   ],
   declarations: [
     AppComponent,
@@ -52,5 +55,6 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
     { provide: MAT_DATE_LOCALE, useValue: 'it-it' },
     { provide: MatDatepickerModule, useValue: { useUtc: true } },
   ],
+  entryComponents: [DialogComponent],
 })
 export class AppModule {}
