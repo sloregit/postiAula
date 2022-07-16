@@ -36,7 +36,7 @@ export class AggiungiClasseComponent implements OnInit {
   chiudi() {
     this.apriLista = false;
   }
-  foo(sezione) {
+  cercaStudenti(sezione) {
     this.arrayStudenti = [];
     if (!sezione) {
       this.http.cercaTutti().subscribe((val) => {
