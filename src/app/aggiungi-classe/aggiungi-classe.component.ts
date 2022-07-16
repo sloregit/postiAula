@@ -69,7 +69,7 @@ export class AggiungiClasseComponent implements OnInit {
           ' Studenti: ' +
           classe.classe.map((val) => val.nome);
         console.log(classe);
-        this.http.aggiornaStudenti(classe).subscribe((res) => {
+        this.http.aggiornaStudenti(JSON.stringify(classe)).subscribe((res) => {
           console.log(res);
           this.res = res;
         });
