@@ -57,20 +57,9 @@ export class AggiungiClasseComponent implements OnInit {
   }
   foo3(anno, sezione) {
     try {
-      let prova = new Classe(1, 'D', [
-        {
-          cognome: 'Mouse',
-          nascita: '13/01/1928',
-          nome: 'Topolino',
-          sezione: 'D',
-        },
-        {
-          cognome: 'Mouse',
-          nascita: '13/01/1928',
-          nome: 'Minnie',
-          sezione: 'E',
-        },
-      ]);
+      //inserito ID///////////////////////
+      console.log(this.selezionati);
+      let prova = new Classe(1, 'D', this.selezionati);
       this.http.aggiornaStudenti(JSON.stringify(prova)).subscribe((res) => {
         console.log(res);
         this.res = res;

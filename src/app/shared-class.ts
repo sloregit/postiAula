@@ -3,7 +3,8 @@ export class Studente {
   cognome: string;
   nascita: string;
   sezione: string;
-  constructor(nome, cognome, nascita, sezione) {
+  id: string;
+  constructor(nome, cognome, nascita, sezione, id?) {
     this.nome = nome;
     this.cognome = cognome;
     this.nascita = nascita;
