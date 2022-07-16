@@ -16,6 +16,7 @@ export class AggiungiClasseComponent implements OnInit {
   apriLista: boolean;
   step: number;
   ok;
+  res;
   constructor(private http: StudentiDBserviceService) {
     this.apriLista = false;
     this.step = 0;
@@ -68,6 +69,10 @@ export class AggiungiClasseComponent implements OnInit {
           ' Studenti: ' +
           classe.classe.map((val) => val.nome);
         console.log(classe);
+        this.http.aggiornaStudenti(classe).subscribe((res) => {
+          console.log(res);
+          this.res = res;
+        });
       }
     } catch (e) {
       console.error('confermaTutto' + e);
