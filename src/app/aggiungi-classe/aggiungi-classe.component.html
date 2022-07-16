@@ -1,8 +1,8 @@
 <mat-accordion class="example-headers-align">
-  <mat-expansion-panel-header>
-    <mat-panel-title> Seleziona gli studenti </mat-panel-title>
-  </mat-expansion-panel-header>
   <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Seleziona gli studenti </mat-panel-title>
+    </mat-expansion-panel-header>
     <section>
       <button mat-raised-button (click)="foo(filtraSezione.value)">
         cerca
@@ -45,14 +45,12 @@
           </mat-accordion>
         </mat-list-option>
       </mat-selection-list>
-      <button mat-raised-button (click)="chiudi()">Chiudi</button>
-
       <p *ngIf="arrayStudenti.length > 0">
         selezionati: {{ studenti.selectedOptions.selected.length }}
       </p>
     </section>
     <mat-action-row>
-      <button mat-button color="primary" (click)="nextStep()">Next</button>
+      <button mat-button color="primary" (click)="nextStep()">Prossimo</button>
     </mat-action-row>
   </mat-expansion-panel>
 
@@ -63,7 +61,7 @@
     <section>
       <mat-form-field appearance="fill">
         <mat-label>Anno</mat-label>
-        <mat-select #filtraSezione>
+        <mat-select #selectAge>
           <mat-option [disabled]="true">Anno scolastico</mat-option>
           <mat-option
             *ngFor="let sezione of arrayAnniScolastici"
@@ -76,20 +74,25 @@
 
       <mat-form-field appearance="fill">
         <mat-label>Sezione</mat-label>
-        <mat-select #filtraSezione>
+        <mat-select #selectSezione>
           <mat-option [disabled]="true">Sezione</mat-option>
-          <mat-option *ngFor="let sezione of arraySezioni" [value]="sezione">
-            {{ sezione }}
+          <mat-option *ngFor="let sez of arraySezioni" [value]="sez">
+            {{ sez }}
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <button mat-raised-button (click)="foo3(filtraSezione.value)">
+      <button
+        mat-raised-button
+        (click)="foo3(selectAge.value, selectSezione.value)"
+      >
         Conferma
       </button>
+      <mat-divider></mat-divider>
+      <mat-card>{{ ok }}</mat-card>
     </section>
 
     <mat-action-row>
-      <button mat-button color="warn" (click)="prevStep()">Previous</button>
+      <button mat-button color="warn" (click)="prevStep()">Indietro</button>
     </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>

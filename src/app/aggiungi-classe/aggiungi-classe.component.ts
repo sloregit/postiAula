@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Studente } from '../shared-class';
+import { Classe, Studente } from '../shared-class';
 import { StudentiDBserviceService } from '../studenti-dbservice.service';
 
 @Component({
@@ -15,6 +15,7 @@ export class AggiungiClasseComponent implements OnInit {
   selezionati: Array<Studente>;
   apriLista: boolean;
   step: number;
+  ok: Classe;
   constructor(private http: StudentiDBserviceService) {
     this.apriLista = false;
     this.step = 0;
@@ -53,9 +54,16 @@ export class AggiungiClasseComponent implements OnInit {
   selezionatiUpdate(list) {
     this.selezionati = list;
   }
-  foo3(sezione) {
-    console.log(sezione);
-    console.log(this.selezionati);
+  foo3(anno, sezione) {
+    try {
+      if (anno && sezione && this.selezionati) {
+        const classe = new Classe(anno, sezione, this.selezionati);
+        this.ok = classe;
+        console.log(classe);
+      }
+    } catch (e) {
+      console.error('confermaTutto' + e);
+    }
   }
   ngOnInit() {}
 }

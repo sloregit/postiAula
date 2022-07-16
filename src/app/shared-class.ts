@@ -10,3 +10,13 @@ export class Studente {
     this.sezione = sezione;
   }
 }
+export class Classe {
+  anno: string;
+  sezione: string;
+  classe: Array<Studente>;
+  constructor(anno, sezione, classe) {
+    this.anno = anno;
+    this.sezione = sezione;
+    this.classe = classe;
+  }
+}
