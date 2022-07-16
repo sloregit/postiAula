@@ -57,6 +57,25 @@ export class AggiungiClasseComponent implements OnInit {
   }
   foo3(anno, sezione) {
     try {
+      let prova = new Classe(1, 'D', [
+        {
+          cognome: 'Mouse',
+          nascita: '13/01/1928',
+          nome: 'Topolino',
+          sezione: 'D',
+        },
+        {
+          cognome: 'Mouse',
+          nascita: '13/01/1928',
+          nome: 'Minnie',
+          sezione: 'E',
+        },
+      ]);
+      this.http.aggiornaStudenti(JSON.stringify(prova)).subscribe((res) => {
+        console.log(res);
+        this.res = res;
+      });
+      ///
       if (anno && sezione && this.selezionati) {
         const classe = new Classe(anno, sezione, this.selezionati);
         this.ok =
@@ -68,11 +87,6 @@ export class AggiungiClasseComponent implements OnInit {
           ' ' +
           ' Studenti: ' +
           classe.classe.map((val) => val.nome);
-        console.log(classe);
-        this.http.aggiornaStudenti(JSON.stringify(classe)).subscribe((res) => {
-          console.log(res);
-          this.res = res;
-        });
       }
     } catch (e) {
       console.error('confermaTutto' + e);
