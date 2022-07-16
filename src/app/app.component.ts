@@ -8,7 +8,7 @@ import { StudentiDBserviceService } from './studenti-dbservice.service';
 })
 export class AppComponent {
   cercaStudenti: boolean;
-  cercaSezione: boolean;
+  aule: boolean;
   arraySezioni: Array<string>;
   parRisultati;
   constructor(private http: StudentiDBserviceService) {

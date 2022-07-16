@@ -9,24 +9,15 @@
       <mat-icon>menu</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button
-        mat-menu-item
-        (click)="cercaSezione = false; cercaStudenti = false"
-      >
+      <button mat-menu-item (click)="aule = false; cercaStudenti = false">
         <mat-icon>home</mat-icon>
         <span>Home</span>
       </button>
-      <button
-        mat-menu-item
-        (click)="cercaSezione = false; cercaStudenti = true"
-      >
+      <button mat-menu-item (click)="aule = false; cercaStudenti = true">
         <mat-icon>people</mat-icon>
         <span>Studenti</span>
       </button>
-      <button
-        mat-menu-item
-        (click)="cercaSezione = true; cercaStudenti = false"
-      >
+      <button mat-menu-item (click)="aule = true; cercaStudenti = false">
         <mat-icon>school</mat-icon>
         <span>Aule</span>
       </button>
@@ -36,6 +27,13 @@
   </mat-toolbar-row>
 </mat-toolbar>
 <mat-card>
+  <section *ngIf="!cercaStudenti && !aule">
+    <mat-card-header>
+      <h3>
+        Per adesso questa pagina è sempre vuota.<br /><br />Usa il menù in alto.
+      </h3>
+    </mat-card-header>
+  </section>
   <section *ngIf="cercaStudenti">
     <mat-card>
       <app-cerca-studente [arraySezioni]="arraySezioni"></app-cerca-studente>
@@ -45,7 +43,7 @@
       <app-aggiungi-studente></app-aggiungi-studente>
     </mat-card>
   </section>
-  <div *ngIf="cercaSezione"></div>
-  <div></div>
-  <app-aggiungi-classe [arraySezioni]="arraySezioni"></app-aggiungi-classe>
+  <section *ngIf="aule">
+    <app-aggiungi-classe [arraySezioni]="arraySezioni"></app-aggiungi-classe>
+  </section>
 </mat-card>
