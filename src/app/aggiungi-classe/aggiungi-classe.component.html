@@ -1,33 +1,95 @@
-<button mat-raised-button (click)="foo()">cerca</button>
-<section *ngIf="apriLista">
-  <mat-selection-list
-    #studenti
-    (selectionChange)="selezionatiUpdate($event.source._value)"
-  >
-    <mat-list-option *ngFor="let studente of arrayStudenti" [value]="studente">
-      <mat-accordion>
-        <mat-expansion-panel hideToggle>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              {{ studente.nome + ' ' + studente.cognome }}
-            </mat-panel-title>
-            <mat-panel-description>
-              {{ 'sezione: ' + studente.sezione }}
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-          <p>{{ 'Data di nascita: ' + studente.nascita }}</p>
-        </mat-expansion-panel>
-        <mat-expansion-panel
-          (opened)="panelOpenState = true"
-          (closed)="panelOpenState = false"
-        ></mat-expansion-panel>
-      </mat-accordion>
-    </mat-list-option>
-  </mat-selection-list>
-  <button mat-raised-button (click)="chiudi()">Chiudi</button>
+<mat-accordion class="example-headers-align">
+  <mat-expansion-panel-header>
+    <mat-panel-title> Seleziona gli studenti </mat-panel-title>
+  </mat-expansion-panel-header>
+  <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+    <section>
+      <button mat-raised-button (click)="foo(filtraSezione.value)">
+        cerca
+      </button>
+      <mat-form-field appearance="fill">
+        <mat-label>filtra per sezione</mat-label>
+        <mat-select #filtraSezione>
+          <mat-option>Nessun filtro</mat-option>
+          <mat-option *ngFor="let sezione of arraySezioni" [value]="sezione">
+            {{ sezione }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </section>
+    <section *ngIf="apriLista">
+      <mat-selection-list
+        #studenti
+        (selectionChange)="selezionatiUpdate($event.source._value)"
+      >
+        <mat-list-option
+          *ngFor="let studente of arrayStudenti"
+          [value]="studente"
+        >
+          <mat-accordion>
+            <mat-expansion-panel hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{ studente.nome + ' ' + studente.cognome }}
+                </mat-panel-title>
+                <mat-panel-description>
+                  {{ 'sezione: ' + studente.sezione }}
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <p>{{ 'Data di nascita: ' + studente.nascita }}</p>
+            </mat-expansion-panel>
+            <mat-expansion-panel
+              (opened)="panelOpenState = true"
+              (closed)="panelOpenState = false"
+            ></mat-expansion-panel>
+          </mat-accordion>
+        </mat-list-option>
+      </mat-selection-list>
+      <button mat-raised-button (click)="chiudi()">Chiudi</button>
 
-  <p *ngIf="arrayStudenti.length > 0">
-    selezionati: {{ studenti.selectedOptions.selected.length }}
-  </p>
-  <button mat-raised-button (click)="foo3()">Conferma</button>
-</section>
+      <p *ngIf="arrayStudenti.length > 0">
+        selezionati: {{ studenti.selectedOptions.selected.length }}
+      </p>
+    </section>
+    <mat-action-row>
+      <button mat-button color="primary" (click)="nextStep()">Next</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Crea la nuova classe </mat-panel-title>
+    </mat-expansion-panel-header>
+    <section>
+      <mat-form-field appearance="fill">
+        <mat-label>Anno</mat-label>
+        <mat-select #filtraSezione>
+          <mat-option [disabled]="true">Anno scolastico</mat-option>
+          <mat-option
+            *ngFor="let sezione of arrayAnniScolastici"
+            [value]="sezione"
+          >
+            {{ sezione }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Sezione</mat-label>
+        <mat-select #filtraSezione>
+          <mat-option [disabled]="true">Sezione</mat-option>
+          <mat-option *ngFor="let sezione of arraySezioni" [value]="sezione">
+            {{ sezione }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-raised-button (click)="foo3(filtraSezione.value)">
+        Conferma
+      </button>
+    </section>
+
+    <mat-action-row>
+      <button mat-button color="warn" (click)="prevStep()">Previous</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
