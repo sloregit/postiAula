@@ -15,7 +15,7 @@ export class AggiungiClasseComponent implements OnInit {
   selezionati: Array<Studente>;
   apriLista: boolean;
   step: number;
-  ok: Classe;
+  ok;
   constructor(private http: StudentiDBserviceService) {
     this.apriLista = false;
     this.step = 0;
@@ -58,7 +58,15 @@ export class AggiungiClasseComponent implements OnInit {
     try {
       if (anno && sezione && this.selezionati) {
         const classe = new Classe(anno, sezione, this.selezionati);
-        this.ok = classe;
+        this.ok =
+          'anno: ' +
+          classe.anno +
+          ' ' +
+          'sezione: ' +
+          classe.sezione +
+          ' ' +
+          ' Studenti: ' +
+          classe.classe.map((val) => val.nome);
         console.log(classe);
       }
     } catch (e) {
