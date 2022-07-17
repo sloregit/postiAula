@@ -16,6 +16,7 @@ export class CercaStudenteComponent implements OnInit {
   studenti = [];
   constructor(private http: StudentiDBserviceService) {}
   cercaStudente(nomeStudente) {
+    this.errore = undefined;
     this.http.getStudente(nomeStudente).subscribe({
       next: (studente) => {
         console.log(studente);
