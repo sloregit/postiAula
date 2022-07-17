@@ -49,6 +49,13 @@ export class AggiungiStudenteComponent {
         let matricola = await firstValueFrom(
           this.generaMatricola.getMatricola()
         );
+        this.newStudente = new Studente(
+          nome,
+          cognome,
+          nascita,
+          sezione,
+          +matricola
+        );
         const dialogConfig = new MatDialogConfig();
         dialogConfig.disableClose = true;
         dialogConfig.autoFocus = true;
@@ -59,13 +66,6 @@ export class AggiungiStudenteComponent {
           .pipe(take(1))
           .subscribe((val) => {
             if (val === true) {
-              this.newStudente = new Studente(
-                nome,
-                cognome,
-                nascita,
-                sezione,
-                +matricola
-              );
               this.http
                 .insertStudente(JSON.stringify(this.newStudente))
                 .subscribe((val) => {
