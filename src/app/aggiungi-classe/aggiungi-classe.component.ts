@@ -52,26 +52,22 @@ export class AggiungiClasseComponent implements OnInit {
     }
     this.apriLista = true;
   }
+  //crea un array con le matricole
   selezionatiUpdate(list) {
     this.selezionati = list.map((studente) => {
-      let id = 'ObjectId(' + studente + ')';
-      let id2 = studente._id;
-      return id;
+      return studente.matricola;
     });
   }
+  //la nuova classe è composta da Anno, sezione e numeri delle matricole
   foo3(anno, sezione) {
     try {
-      //inserito ID///////////////////////
-
-      let prova = new Classe(1, 'D', this.selezionati);
-      console.log(prova);
-      this.http.aggiornaStudenti(JSON.stringify(prova)).subscribe((res) => {
-        console.log(res);
-        this.res = res;
-      });
       ///
       if (anno && sezione && this.selezionati) {
         const classe = new Classe(anno, sezione, this.selezionati);
+        this.http.aggiornaStudenti(JSON.stringify(classe)).subscribe((res) => {
+          console.log(res);
+          this.res = res;
+        });
         this.ok =
           'anno: ' +
           classe.anno +
@@ -80,7 +76,7 @@ export class AggiungiClasseComponent implements OnInit {
           classe.sezione +
           ' ' +
           ' Studenti: ' +
-          classe.classe.map((val) => val.nome);
+          classe.classe.map((val) => val);
       }
     } catch (e) {
       console.error('confermaTutto' + e);
