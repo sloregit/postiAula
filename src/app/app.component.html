@@ -40,10 +40,12 @@
     </mat-card>
     <mat-divider></mat-divider>
     <mat-card>
-      <app-aggiungi-studente></app-aggiungi-studente>
+      <app-aggiungi-studente
+        [arraySezioni]="arraySezioni"
+      ></app-aggiungi-studente>
     </mat-card>
   </section>
-  <section>
+  <section *ngIf="aule">
     <app-aggiungi-classe [arraySezioni]="arraySezioni"></app-aggiungi-classe>
   </section>
 </mat-card>

@@ -5,6 +5,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
 import { FormControl, Validators } from '@angular/forms';
 import { take } from 'rxjs';
+import { GeneraMatricolaService } from './genera-matricola.service';
 
 @Component({
   selector: 'app-aggiungi-studente',
@@ -26,7 +27,8 @@ export class AggiungiStudenteComponent {
   compleatato: string;
   constructor(
     private http: StudentiDBserviceService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private matricola: GeneraMatricolaService
   ) {
     this.dataMax = new Date();
   }
@@ -43,6 +45,10 @@ export class AggiungiStudenteComponent {
         !this.data.errors &&
         !this.sezione.errors
       ) {
+        let _matricola = this.matricola.getMatricola().subscribe((m) => {
+          return m;
+        });
+        console.log(_matricola);
         this.newStudente = new Studente(nome, cognome, nascita, sezione);
         const dialogConfig = new MatDialogConfig();
         dialogConfig.disableClose = true;

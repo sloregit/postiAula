@@ -3,12 +3,13 @@ export class Studente {
   cognome: string;
   nascita: string;
   sezione: string;
-  id: string;
-  constructor(nome, cognome, nascita, sezione, id?) {
+  matricola: string;
+  constructor(nome, cognome, nascita, sezione, matricola?) {
     this.nome = nome;
     this.cognome = cognome;
     this.nascita = nascita;
     this.sezione = sezione;
+    this.matricola = matricola;
   }
 }
 export class Classe {

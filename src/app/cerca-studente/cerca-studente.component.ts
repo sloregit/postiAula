@@ -52,7 +52,8 @@ export class CercaStudenteComponent implements OnInit {
               studente.nome,
               studente.sezione,
               studente.nascita,
-              studente.sezione
+              studente.sezione,
+              studente.matricola
             )
           );
           console.log(this.studenti);

@@ -53,13 +53,18 @@ export class AggiungiClasseComponent implements OnInit {
     this.apriLista = true;
   }
   selezionatiUpdate(list) {
-    this.selezionati = list;
+    this.selezionati = list.map((studente) => {
+      let id = 'ObjectId(' + studente + ')';
+      let id2 = studente._id;
+      return id;
+    });
   }
   foo3(anno, sezione) {
     try {
       //inserito ID///////////////////////
-      console.log(this.selezionati);
+
       let prova = new Classe(1, 'D', this.selezionati);
+      console.log(prova);
       this.http.aggiornaStudenti(JSON.stringify(prova)).subscribe((res) => {
         console.log(res);
         this.res = res;

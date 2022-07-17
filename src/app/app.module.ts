@@ -26,6 +26,7 @@ import { AulaComponent } from './aula/aula.component';
 import { AggiungiClasseComponent } from './aggiungi-classe/aggiungi-classe.component';
 import { CercaTuttiComponent } from './cerca-tutti/cerca-tutti.component';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { GeneraMatricolaService } from './aggiungi-studente/genera-matricola.service';
 
 @NgModule({
   imports: [
@@ -58,6 +59,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
   ],
   bootstrap: [AppComponent],
   providers: [
+    GeneraMatricolaService,
     StudentiDBserviceService,
     { provide: MAT_DATE_LOCALE, useValue: 'it-it' },
     { provide: MatDatepickerModule, useValue: { useUtc: true } },
