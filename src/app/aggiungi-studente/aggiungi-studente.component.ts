@@ -4,7 +4,7 @@ import { Studente } from '../shared-class';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
 import { FormControl, Validators } from '@angular/forms';
-import { take } from 'rxjs';
+import { firstValueFrom, take } from 'rxjs';
 import { GeneraMatricolaService } from './genera-matricola.service';
 
 @Component({
@@ -19,6 +19,7 @@ export class AggiungiStudenteComponent {
   nascita: string;
   newStudente: Studente;
   conferma: boolean;
+  matricola;
   @Input() arraySezioni: Array<string>;
   nome = new FormControl('', [Validators.required]);
   cognome = new FormControl('', [Validators.required]);
@@ -28,7 +29,7 @@ export class AggiungiStudenteComponent {
   constructor(
     private http: StudentiDBserviceService,
     private dialog: MatDialog,
-    private matricola: GeneraMatricolaService
+    private generaMatricola: GeneraMatricolaService
   ) {
     this.dataMax = new Date();
   }
@@ -37,7 +38,7 @@ export class AggiungiStudenteComponent {
   //validator ritorna {errors:true} se trova errori =>!this.daValidare.errors è tutto ok
   //Il dialog si apre con open(), afterClose() è un Observable
   //Studente è in shared-class
-  aggiungiStudente(nome, cognome, nascita, sezione) {
+  async immatricola(nome, cognome, nascita, sezione) {
     try {
       if (
         !this.nome.errors &&
@@ -45,11 +46,9 @@ export class AggiungiStudenteComponent {
         !this.data.errors &&
         !this.sezione.errors
       ) {
-        let _matricola = this.matricola.getMatricola().subscribe((m) => {
-          return m;
-        });
-        console.log(_matricola);
-        this.newStudente = new Studente(nome, cognome, nascita, sezione);
+        let matricola = await firstValueFrom(
+          this.generaMatricola.getMatricola()
+        );
         const dialogConfig = new MatDialogConfig();
         dialogConfig.disableClose = true;
         dialogConfig.autoFocus = true;
@@ -60,6 +59,13 @@ export class AggiungiStudenteComponent {
           .pipe(take(1))
           .subscribe((val) => {
             if (val === true) {
+              this.newStudente = new Studente(
+                nome,
+                cognome,
+                nascita,
+                sezione,
+                +matricola
+              );
               this.http
                 .insertStudente(JSON.stringify(this.newStudente))
                 .subscribe((val) => {

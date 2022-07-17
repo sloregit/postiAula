@@ -1,10 +1,12 @@
+import { GeneraMatricolaService } from './aggiungi-studente/genera-matricola.service';
+
 export class Studente {
   nome: string;
   cognome: string;
   nascita: string;
   sezione: string;
-  matricola: string;
-  constructor(nome, cognome, nascita, sezione, matricola?) {
+  matricola: number;
+  constructor(nome, cognome, nascita, sezione, matricola) {
     this.nome = nome;
     this.cognome = cognome;
     this.nascita = nascita;
