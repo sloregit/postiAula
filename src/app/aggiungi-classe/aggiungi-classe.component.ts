@@ -10,7 +10,7 @@ import { StudentiDBserviceService } from '../studenti-dbservice.service';
 export class AggiungiClasseComponent implements OnInit {
   panelOpenState = false;
   @Input() arraySezioni: Array<string>;
-  arrayAnniScolastici: Array<string>;
+  arrayAnniScolastici: Array<number>;
   arrayStudenti: Array<Studente>;
   selezionati: Array<Studente>;
   apriLista: boolean;
@@ -20,7 +20,7 @@ export class AggiungiClasseComponent implements OnInit {
   constructor(private http: StudentiDBserviceService) {
     this.apriLista = false;
     this.step = 0;
-    this.arrayAnniScolastici = ['1', '2', '3'];
+    this.arrayAnniScolastici = [1, 2, 3];
   }
 
   setStep(index: number) {
@@ -64,7 +64,7 @@ export class AggiungiClasseComponent implements OnInit {
       ///
       if (anno && sezione && this.selezionati) {
         const classe = new Classe(anno, sezione, this.selezionati);
-        this.http.aggiornaStudenti(JSON.stringify(classe)).subscribe((res) => {
+        this.http.generaClasse(JSON.stringify(classe)).subscribe((res) => {
           console.log(res);
           this.res = res;
         });

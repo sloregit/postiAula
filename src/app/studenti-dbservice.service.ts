@@ -22,7 +22,7 @@ export class StudentiDBserviceService {
   public cercaTutti() {
     return this.http.get<string>(this.URL + '/cercaTutti');
   }
-  public aggiornaStudenti(body) {
-    return this.http.post<string>(this.URL + '/aggiornaStudenti?', body);
+  public generaClasse(body) {
+    return this.http.post<string>(this.URL + '/generaClasse?', body);
   }
 }
