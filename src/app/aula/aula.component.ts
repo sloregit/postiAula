@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { CercaAuleService } from './cerca-aule.service';
 
 @Component({
   selector: 'app-aula',
@@ -9,7 +10,9 @@ export class AulaComponent implements OnInit {
   @Input() arraySezioni: Array<string>;
   @Input() arrayAnniScolastici: Array<number>;
   risposta;
-  constructor() {}
-  cercaAula() {}
+  constructor(private cerca: CercaAuleService) {}
+  cercaAula() {
+    this.cerca.cercaAula(1, 'D').subscribe((val) => console.log(val));
+  }
   ngOnInit() {}
 }

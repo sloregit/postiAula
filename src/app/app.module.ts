@@ -28,6 +28,7 @@ import { CercaTuttiComponent } from './cerca-tutti/cerca-tutti.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { GeneraMatricolaService } from './aggiungi-studente/genera-matricola.service';
 import { GeneraClasseService } from './aggiungi-classe/genera-classe.service';
+import { CercaAuleService } from './aula/cerca-aule.service';
 
 @NgModule({
   imports: [
@@ -63,6 +64,7 @@ import { GeneraClasseService } from './aggiungi-classe/genera-classe.service';
     GeneraMatricolaService,
     GeneraClasseService,
     StudentiDBserviceService,
+    CercaAuleService,
     { provide: MAT_DATE_LOCALE, useValue: 'it-it' },
     { provide: MatDatepickerModule, useValue: { useUtc: true } },
   ],
