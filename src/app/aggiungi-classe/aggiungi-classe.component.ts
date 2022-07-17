@@ -11,7 +11,7 @@ import { GeneraClasseService } from './genera-classe.service';
 export class AggiungiClasseComponent implements OnInit {
   panelOpenState = false;
   @Input() arraySezioni: Array<string>;
-  arrayAnniScolastici: Array<number>;
+  @Input() arrayAnniScolastici: Array<number>;
   arrayStudenti: Array<Studente>;
   selezionati: Array<Studente>;
   apriLista: boolean;

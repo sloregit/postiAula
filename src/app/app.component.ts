@@ -10,9 +10,11 @@ export class AppComponent {
   cercaStudenti: boolean;
   aule: boolean;
   arraySezioni: Array<string>;
+  arrayAnniScolastici: Array<number>;
   parRisultati;
   constructor(private http: StudentiDBserviceService) {
     this.arraySezioni = ['A', 'B', 'C', 'D', 'E', 'F'];
+    this.arrayAnniScolastici = [1, 2, 3];
   }
   foo() {
     this.http.cercaTutti().subscribe((val) => {
