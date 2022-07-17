@@ -46,15 +46,16 @@ export class AggiungiStudenteComponent {
         !this.data.errors &&
         !this.sezione.errors
       ) {
-        let matricola = await firstValueFrom(
-          this.generaMatricola.getMatricola()
-        );
-        this.newStudente = new Studente(
-          nome,
-          cognome,
-          nascita,
-          sezione,
-          +matricola
+        await firstValueFrom(this.generaMatricola.getMatricola()).then(
+          (matricola) => {
+            this.newStudente = new Studente(
+              nome,
+              cognome,
+              nascita,
+              sezione,
+              +matricola
+            );
+          }
         );
         const dialogConfig = new MatDialogConfig();
         dialogConfig.disableClose = true;
