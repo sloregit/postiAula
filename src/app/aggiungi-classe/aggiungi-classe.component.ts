@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Classe, Studente } from '../shared-class';
 import { StudentiDBserviceService } from '../studenti-dbservice.service';
+import { GeneraClasseService } from './genera-classe.service';
 
 @Component({
   selector: 'app-aggiungi-classe',
@@ -17,7 +18,10 @@ export class AggiungiClasseComponent implements OnInit {
   step: number;
   ok;
   res;
-  constructor(private http: StudentiDBserviceService) {
+  constructor(
+    private http: StudentiDBserviceService,
+    private classGenerator: GeneraClasseService
+  ) {
     this.apriLista = false;
     this.step = 0;
     this.arrayAnniScolastici = [1, 2, 3];
@@ -64,10 +68,12 @@ export class AggiungiClasseComponent implements OnInit {
       ///
       if (anno && sezione && this.selezionati) {
         const classe = new Classe(anno, sezione, this.selezionati);
-        this.http.generaClasse(JSON.stringify(classe)).subscribe((res) => {
-          console.log(res);
-          this.res = res;
-        });
+        this.classGenerator
+          .generaClasse(JSON.stringify(classe))
+          .subscribe((res) => {
+            console.log(res);
+            this.res = res;
+          });
         this.ok =
           'anno: ' +
           classe.anno +
