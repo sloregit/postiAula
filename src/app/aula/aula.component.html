@@ -1,4 +1,49 @@
-<button mat-raised-button (click)="cercaAula()">Cerca</button>
-<mat-card>
-  <p>{{ arrayStudenti }}</p>
+<button mat-raised-button color="primary" (click)="cercaAula()">Cerca</button>
+<mat-card *ngIf="arrayStudenti">
+  <div class="example-container">
+    <div
+      cdkDropList
+      cdkDropListOrientation="horizontal"
+      #fila1="cdkDropList"
+      [cdkDropListData]="arrayStudenti"
+      [cdkDropListConnectedTo]="[fila2, fila3]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div class="example-box" *ngFor="let studente of arrayStudenti" cdkDrag>
+        {{ studente.nome }}
+      </div>
+    </div>
+  </div>
+
+  <div class="example-container">
+    <div
+      cdkDropList
+      cdkDropListOrientation="horizontal"
+      #fila2="cdkDropList"
+      [cdkDropListData]="arrayStudenti2"
+      [cdkDropListConnectedTo]="[fila1, fila3]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div class="example-box" *ngFor="let studente of arrayStudenti2" cdkDrag>
+        {{ studente.nome }}
+      </div>
+    </div>
+  </div>
+  <div class="example-container">
+    <div
+      cdkDropList
+      cdkDropListOrientation="horizontal"
+      #fila3="cdkDropList"
+      [cdkDropListData]="arrayStudenti3"
+      [cdkDropListConnectedTo]="[fila1, fila2]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div class="example-box" *ngFor="let studente of arrayStudenti3" cdkDrag>
+        {{ studente.nome }}
+      </div>
+    </div>
+  </div>
 </mat-card>
