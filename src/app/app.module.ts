@@ -29,6 +29,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { GeneraMatricolaService } from './aggiungi-studente/genera-matricola.service';
 import { GeneraClasseService } from './aggiungi-classe/genera-classe.service';
 import { CercaAuleService } from './aula/cerca-aule.service';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   imports: [
@@ -50,6 +51,7 @@ import { CercaAuleService } from './aula/cerca-aule.service';
     MatNativeDateModule,
     MatDialogModule,
     MatExpansionModule,
+    DragDropModule,
   ],
   declarations: [
     AppComponent,

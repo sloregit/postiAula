@@ -9,6 +9,7 @@ import { StudentiDBserviceService } from './studenti-dbservice.service';
 export class AppComponent {
   cercaStudenti: boolean;
   aule: boolean;
+  setAule: boolean;
   arraySezioni: Array<string>;
   arrayAnniScolastici: Array<number>;
   parRisultati;
