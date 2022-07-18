@@ -12,7 +12,10 @@ export class AulaComponent implements OnInit {
   risposta;
   constructor(private cerca: CercaAuleService) {}
   cercaAula() {
-    this.cerca.cercaAula(1, 'D').subscribe((val) => console.log(val));
+    this.cerca.cercaAula(1, 'B').subscribe((val) => {
+      console.log(val);
+      this.risposta = val;
+    });
   }
   ngOnInit() {}
 }

@@ -63,9 +63,8 @@ export class AggiungiClasseComponent implements OnInit {
     });
   }
   //la nuova classe è composta da Anno, sezione e numeri delle matricole
-  foo3(anno, sezione) {
+  inserisciClasse(anno, sezione) {
     try {
-      ///
       if (anno && sezione && this.selezionati) {
         const classe = new Classe(anno, sezione, this.selezionati);
         this.classGenerator

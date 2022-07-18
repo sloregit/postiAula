@@ -45,13 +45,13 @@
       ></app-aggiungi-studente>
     </mat-card>
   </section>
-  <section *ngIf="aule">
+  <section>
     <app-aggiungi-classe
       [arraySezioni]="arraySezioni"
       [arrayAnniScolastici]="arrayAnniScolastici"
     ></app-aggiungi-classe>
   </section>
-  <section>
+  <section *ngIf="aule">
     <app-aula
       [arraySezioni]="arraySezioni"
       [arrayAnniScolastici]="arrayAnniScolastici"
