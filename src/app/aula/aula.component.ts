@@ -18,23 +18,21 @@ export class AulaComponent implements OnInit {
   @Input() arraySezioni: Array<string>;
   @Input() arrayAnniScolastici: Array<number>;
   risposta;
-  file: Array<Studente[]>;
   arrayStudenti: Array<Studente>;
   arrayStudenti2: Array<Studente>;
   arrayStudenti3: Array<Studente>;
+  arrayStudenti4: Array<Studente>;
+  arrayStudenti5: Array<Studente>;
   constructor(private cerca: CercaAuleService) {}
   cercaAula(anno, sezione) {
     this.cerca.cercaAula(1, 'D').subscribe((val) => {
       this.risposta = JSON.parse(val);
       //console.log(val);
-      this.file = [
-        this.risposta.classe.slice(0, 6),
-        this.risposta.classe.slice(6, 12),
-        this.risposta.classe.slice(12, 18),
-        this.risposta.classe.slice(18, 24),
-        this.risposta.classe.slice(24, 30),
-      ];
-      console.log(this.file);
+     this.arrayStudenti = this.risposta.classe.slice(0, 6),
+     this.arrayStudenti2 = this.risposta.classe.slice(6, 12),
+     this.arrayStudenti3 =  this.risposta.classe.slice(12, 18),
+     this.arrayStudenti4 =  this.risposta.classe.slice(18, 24),
+     this.arrayStudenti5 =  this.risposta.classe.slice(24, 30),
     });
   }
 
