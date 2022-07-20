@@ -72,6 +72,40 @@
           <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
           {{ studente.nome }}
         </div>
+        <div
+          cdkDropList
+          cdkDropListOrientation="horizontal"
+          [cdkDropListData]="arrayStudenti4"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <div
+            class="example-box"
+            *ngFor="let studente of arrayStudenti4"
+            cdkDrag
+          >
+            <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+
+            {{ studente.nome }}
+          </div>
+        </div>
+        <div
+          cdkDropList
+          cdkDropListOrientation="horizontal"
+          [cdkDropListData]="arrayStudenti5"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <div
+            class="example-box"
+            *ngFor="let studente of arrayStudenti5"
+            cdkDrag
+          >
+            <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+
+            {{ studente.nome }}
+          </div>
+        </div>
       </div>
     </div>
   </div>

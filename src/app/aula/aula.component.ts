@@ -28,15 +28,15 @@ export class AulaComponent implements OnInit {
     this.cerca.cercaAula(1, 'D').subscribe((val) => {
       this.risposta = JSON.parse(val);
       //console.log(val);
-     this.arrayStudenti = this.risposta.classe.slice(0, 6),
-     this.arrayStudenti2 = this.risposta.classe.slice(6, 12),
-     this.arrayStudenti3 =  this.risposta.classe.slice(12, 18),
-     this.arrayStudenti4 =  this.risposta.classe.slice(18, 24),
-     this.arrayStudenti5 =  this.risposta.classe.slice(24, 30),
+      this.arrayStudenti = this.risposta.classe.slice(0, 6);
+      this.arrayStudenti2 = this.risposta.classe.slice(6, 12);
+      this.arrayStudenti3 = this.risposta.classe.slice(12, 18);
+      this.arrayStudenti4 = this.risposta.classe.slice(18, 24);
+      this.arrayStudenti5 = this.risposta.classe.slice(24, 30);
     });
   }
 
-  drop(event: CdkDragDrop<Array<Studente[]>>) {
+  drop(event: CdkDragDrop<Studente[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,
