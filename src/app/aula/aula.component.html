@@ -25,7 +25,7 @@
     Cerca
   </button>
 </section>
-<mat-card *ngIf="">
+<mat-card *ngIf="arrayStudenti">
   <div cdkDropListGroup>
     <div class="example-container">
       <div
@@ -42,6 +42,7 @@
         </div>
       </div>
       <div
+        *ngIf="arrayStudenti2"
         cdkDropList
         cdkDropListOrientation="horizontal"
         [cdkDropListData]="arrayStudenti2"
@@ -58,6 +59,7 @@
         </div>
       </div>
       <div
+        *ngIf="arrayStudenti3"
         cdkDropList
         cdkDropListOrientation="horizontal"
         [cdkDropListData]="arrayStudenti3"
@@ -73,6 +75,7 @@
           {{ studente.nome }}
         </div>
         <div
+          *ngIf="arrayStudenti4"
           cdkDropList
           cdkDropListOrientation="horizontal"
           [cdkDropListData]="arrayStudenti4"
@@ -90,6 +93,7 @@
           </div>
         </div>
         <div
+          *ngIf="arrayStudenti5"
           cdkDropList
           cdkDropListOrientation="horizontal"
           [cdkDropListData]="arrayStudenti5"
