@@ -45,9 +45,7 @@
 <mat-card>
   <section *ngIf="!cercaStudenti && !aule && !setAule">
     <mat-card-header>
-      <h3>
-        Per adesso questa pagina è sempre vuota.<br /><br />Usa il menù in alto.
-      </h3>
+      <h3>AAA</h3>
     </mat-card-header>
   </section>
   <section *ngIf="cercaStudenti">
@@ -68,7 +66,7 @@
       [arrayAnniScolastici]="arrayAnniScolastici"
     ></app-aggiungi-classe>
   </section>
-  <section *ngIf="aule">
+  <section>
     <app-aula
       [arraySezioni]="arraySezioni"
       [arrayAnniScolastici]="arrayAnniScolastici"

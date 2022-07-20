@@ -1,4 +1,30 @@
-<button mat-raised-button color="primary" (click)="cercaAula()">Cerca</button>
+<section>
+  <mat-form-field appearance="fill">
+    <mat-label>Anno</mat-label>
+    <mat-select #selectAnno>
+      <mat-option [disabled]="true">Anno</mat-option>
+      <mat-option *ngFor="let anno of arrayAnniScolastici" [value]="anno">
+        {{ anno }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Sezione</mat-label>
+    <mat-select #selectSezione>
+      <mat-option [disabled]="true">Sezione</mat-option>
+      <mat-option *ngFor="let sezione of arraySezioni" [value]="sezione">
+        {{ sezione }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="cercaAula(selectAnno.value, selectSezione.value)"
+  >
+    Cerca
+  </button>
+</section>
 <mat-card *ngIf="arrayStudenti">
   <div class="example-container">
     <div
@@ -11,6 +37,8 @@
       (cdkDropListDropped)="drop($event)"
     >
       <div class="example-box" *ngFor="let studente of arrayStudenti" cdkDrag>
+        <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+
         {{ studente.nome }}
       </div>
     </div>
@@ -27,6 +55,8 @@
       (cdkDropListDropped)="drop($event)"
     >
       <div class="example-box" *ngFor="let studente of arrayStudenti2" cdkDrag>
+        <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+
         {{ studente.nome }}
       </div>
     </div>
@@ -42,6 +72,8 @@
       (cdkDropListDropped)="drop($event)"
     >
       <div class="example-box" *ngFor="let studente of arrayStudenti3" cdkDrag>
+        <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+
         {{ studente.nome }}
       </div>
     </div>

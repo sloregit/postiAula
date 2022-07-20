@@ -1,12 +1,21 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CercaAuleService } from './cerca-aule.service';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { Studente } from '../shared-class';
+import { Classe, Studente } from '../shared-class';
 import {
   CdkDragDrop,
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
+export class aulaV {
+  classe: Classe;
+  constructor(classe) {
+    this.classe = classe;
+  }
+  genera() {
+    
+  }
+}
 
 @Component({
   selector: 'app-aula',
@@ -21,15 +30,16 @@ export class AulaComponent implements OnInit {
   arrayStudenti2: Array<Studente>;
   arrayStudenti3: Array<Studente>;
   constructor(private cerca: CercaAuleService) {}
-  cercaAula() {
-    this.cerca.cercaAula(1, 'D').subscribe((val) => {
-      console.log(val);
+  cercaAula(anno, sezione) {
+    this.cerca.cercaAula(+anno, sezione).subscribe((val) => {
       this.risposta = JSON.parse(val);
+      console.log(this.risposta);
       this.arrayStudenti = this.risposta.classe.slice(0, 4);
       this.arrayStudenti2 = this.risposta.classe.slice(4, 9);
       this.arrayStudenti3 = this.risposta.classe.slice(10);
     });
   }
+
   drop(event: CdkDragDrop<Studente[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(
