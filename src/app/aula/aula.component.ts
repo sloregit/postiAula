@@ -27,11 +27,11 @@ export class AulaComponent implements OnInit {
   cercaAula(anno, sezione) {
     this.service.cercaAula(1, 'D').subscribe((val) => {
       this.risposta = JSON.parse(val);
-      this.arrayStudenti = this.risposta.classe.slice(0, 6);
-      this.arrayStudenti2 = this.risposta.classe.slice(6, 12);
-      this.arrayStudenti3 = this.risposta.classe.slice(12, 18);
-      this.arrayStudenti4 = this.risposta.classe.slice(18, 24);
-      this.arrayStudenti5 = this.risposta.classe.slice(24, 30);
+      this.arrayStudenti = this.risposta.classe.slice(0, 5);
+      this.arrayStudenti2 = this.risposta.classe.slice(5, 10);
+      this.arrayStudenti3 = this.risposta.classe.slice(10, 15);
+      this.arrayStudenti4 = this.risposta.classe.slice(15, 20);
+      this.arrayStudenti5 = this.risposta.classe.slice(20, 25);
     });
   }
   foo() {
