@@ -18,7 +18,7 @@ export class AulaComponent implements OnInit {
   @Input() arraySezioni: Array<string>;
   @Input() arrayAnniScolastici: Array<number>;
   risposta;
-  file;
+  file: Array<Studente[]>;
   arrayStudenti: Array<Studente>;
   arrayStudenti2: Array<Studente>;
   arrayStudenti3: Array<Studente>;
@@ -38,7 +38,7 @@ export class AulaComponent implements OnInit {
     });
   }
 
-  drop(event: CdkDragDrop<Studente[]>) {
+  drop(event: CdkDragDrop<Array<Studente[]>>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,
