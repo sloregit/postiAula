@@ -17,17 +17,16 @@ import { switchScan } from 'rxjs';
 export class AulaComponent implements OnInit {
   @Input() arraySezioni: Array<string>;
   @Input() arrayAnniScolastici: Array<number>;
-  risposta;
+  risposta: Classe;
   arrayStudenti: Array<Studente>;
   arrayStudenti2: Array<Studente>;
   arrayStudenti3: Array<Studente>;
   arrayStudenti4: Array<Studente>;
   arrayStudenti5: Array<Studente>;
-  constructor(private cerca: CercaAuleService) {}
+  constructor(private service: CercaAuleService) {}
   cercaAula(anno, sezione) {
-    this.cerca.cercaAula(1, 'D').subscribe((val) => {
+    this.service.cercaAula(1, 'D').subscribe((val) => {
       this.risposta = JSON.parse(val);
-      //console.log(val);
       this.arrayStudenti = this.risposta.classe.slice(0, 6);
       this.arrayStudenti2 = this.risposta.classe.slice(6, 12);
       this.arrayStudenti3 = this.risposta.classe.slice(12, 18);
@@ -35,7 +34,19 @@ export class AulaComponent implements OnInit {
       this.arrayStudenti5 = this.risposta.classe.slice(24, 30);
     });
   }
-
+  foo() {
+    console.log(this.arrayStudenti2);
+    let conc = this.arrayStudenti.concat(
+      this.arrayStudenti2,
+      this.arrayStudenti3,
+      this.arrayStudenti4,
+      this.arrayStudenti5
+    );
+    let _classe = new Classe(this.risposta.anno, this.risposta.sezione, conc);
+    this.service.aggiornaAula(_classe).subscribe((res) => {
+      console.log(res);
+    });
+  }
   drop(event: CdkDragDrop<Studente[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(

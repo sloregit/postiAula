@@ -12,4 +12,7 @@ export class CercaAuleService {
       this.URL + '/cercaClasse?' + 'anno=' + anno + '&&sezione=' + sezione
     );
   }
+  aggiornaAula(body) {
+    return this.http.post<string>(this.URL + '/aggiornaClasse?', body);
+  }
 }
