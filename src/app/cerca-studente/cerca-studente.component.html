@@ -15,6 +15,10 @@
   <button mat-raised-button (click)="cercaStudente(nomeStudente.value)">
     Cerca
   </button>
+  <mat-card-subtitle
+    >Cerca per nome,SOLO nome: devi conoscere il nome da cercare (eh
+    beh)</mat-card-subtitle
+  >
   <p>{{ studente }}</p>
 </section>
 <section>
@@ -30,6 +34,15 @@
   <button mat-raised-button (click)="cercaSezione(selectSezione.value)">
     Cerca
   </button>
+  <mat-card-subtitle>
+    Serve a poco, per adesso sono tutti in D, se vuoi puoi creare una nuova
+    classe, assegnargli gli studenti e metterli nella sezione che vuoi tutti
+    insieme</mat-card-subtitle
+  >
+  <mat-card-subtitle>
+    Oppure aggiungi uno studente e gli dai la sezione che ti interessa, ma
+    dovrai comunque creare la classe per visualizzarla nella pagina "Classi"
+  </mat-card-subtitle>
   <mat-selection-list #studentiList [multiple]="false">
     <mat-list-option *ngFor="let studente of studenti" [value]="studente">
       {{ studente.nome }}

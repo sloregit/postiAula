@@ -28,14 +28,14 @@
         (click)="aule = true; cercaStudenti = false; setAule = false"
       >
         <mat-icon>school</mat-icon>
-        <span>Aule</span>
+        <span>Classi</span>
       </button>
       <button
         mat-menu-item
         (click)="aule = false; cercaStudenti = false; setAule = true"
       >
         <mat-icon>settings</mat-icon>
-        <span>Imposta aule</span>
+        <span>Imposta Classi</span>
       </button>
     </mat-menu>
     <span>sQuola</span>
@@ -45,8 +45,12 @@
 <mat-card>
   <section *ngIf="!cercaStudenti && !aule && !setAule">
     <mat-card-header>
-      <h3>AAA</h3>
+      <mat-card-title
+        ><h3>Prima o poi farò anche la homepage</h3></mat-card-title
+      >
+      <mat-card-subtitle>(usa il menu)</mat-card-subtitle>
     </mat-card-header>
+    <mat-divider></mat-divider>
   </section>
   <section *ngIf="cercaStudenti">
     <mat-card>
@@ -66,7 +70,7 @@
       [arrayAnniScolastici]="arrayAnniScolastici"
     ></app-aggiungi-classe>
   </section>
-  <section>
+  <section *ngIf="aule">
     <app-aula
       [arraySezioni]="arraySezioni"
       [arrayAnniScolastici]="arrayAnniScolastici"

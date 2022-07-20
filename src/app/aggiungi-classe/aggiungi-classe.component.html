@@ -2,6 +2,11 @@
   <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
     <mat-expansion-panel-header>
       <mat-panel-title> Seleziona gli studenti </mat-panel-title>
+      <mat-card-header>
+        <mat-card-subtitle>
+          Per adesso gli studenti vanno selezionati uno ad uno
+        </mat-card-subtitle>
+      </mat-card-header>
     </mat-expansion-panel-header>
     <section>
       <button mat-raised-button (click)="cercaStudenti(filtraSezione.value)">
@@ -87,6 +92,10 @@
       >
         Conferma
       </button>
+      <mat-card-subtitle>
+        <b>Occhio:</b> se crei una classe, tutti gli studenti che ci metti
+        acquisiscono la sezione che indichi(ha senso no?)
+      </mat-card-subtitle>
       <mat-divider></mat-divider>
       <mat-card>{{ ok }}</mat-card>
       <mat-divider></mat-divider>

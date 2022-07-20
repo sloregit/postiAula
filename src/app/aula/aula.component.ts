@@ -25,7 +25,7 @@ export class AulaComponent implements OnInit {
   arrayStudenti5: Array<Studente>;
   constructor(private service: CercaAuleService) {}
   cercaAula(anno, sezione) {
-    this.service.cercaAula(1, 'D').subscribe((val) => {
+    this.service.cercaAula(+anno, sezione).subscribe((val) => {
       this.risposta = JSON.parse(val);
       this.arrayStudenti = this.risposta.classe.slice(0, 5);
       this.arrayStudenti2 = this.risposta.classe.slice(5, 10);
