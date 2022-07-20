@@ -25,7 +25,28 @@
     Cerca
   </button>
 </section>
-<mat-card>
+<section>
+  <mat-card>
+    <div cdkDropListGroup>
+      <div class="example-container" *ngFor="let fila of file; let i = index">
+        <div
+          cdkDropList
+          cdkDropListOrientation="horizontal"
+          [cdkDropListData]="fila"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <div class="example-box" *ngFor="let studente of fila" cdkDrag>
+            <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+
+            {{ studente.nome }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</section>
+<mat-card *ngIf="">
   <div cdkDropListGroup>
     <div class="example-container">
       <div

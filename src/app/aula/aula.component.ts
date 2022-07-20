@@ -9,39 +9,6 @@ import {
 } from '@angular/cdk/drag-drop';
 import { switchScan } from 'rxjs';
 
-export class aulaV implements Classe {
-  anno;
-  sezione;
-  classe;
-  constructor(response) {
-    this.anno = response.anno;
-    this.sezione = response.sezione;
-    this.classe = response.classe;
-  }
-  genera() {
-    try {
-      if (this.classe.length) {
-        switch (this.classe.length) {
-          case this.classe.length >= 6: {
-          }
-          case this.classe.length > 6 && this.classe.length <= 12: {
-          }
-          case this.classe.length > 12 && this.classe.length <= 18: {
-          }
-          case this.classe.length > 18 && this.classe.length <= 24: {
-          }
-          case this.classe.length > 24 && this.classe.length <= 30: {
-          }
-          case this.classe > 30: {
-          }
-        }
-      }
-    } catch (e) {
-      ('Errore in aulaV.genera');
-    }
-  }
-}
-
 @Component({
   selector: 'app-aula',
   templateUrl: './aula.component.html',
@@ -51,21 +18,23 @@ export class AulaComponent implements OnInit {
   @Input() arraySezioni: Array<string>;
   @Input() arrayAnniScolastici: Array<number>;
   risposta;
-  aula: aulaV;
+  file;
   arrayStudenti: Array<Studente>;
   arrayStudenti2: Array<Studente>;
   arrayStudenti3: Array<Studente>;
-  arr;
   constructor(private cerca: CercaAuleService) {}
   cercaAula(anno, sezione) {
     this.cerca.cercaAula(1, 'D').subscribe((val) => {
       this.risposta = JSON.parse(val);
-      console.log(val);
-      this.aula = new aulaV(this.risposta);
-      console.log(this.aula.classe);
-      this.arrayStudenti = this.risposta.classe.slice(0, 4);
-      this.arrayStudenti2 = this.risposta.classe.slice(4, 9);
-      this.arrayStudenti3 = this.risposta.classe.slice(10);
+      //console.log(val);
+      this.file = [
+        this.risposta.classe.slice(0, 6),
+        this.risposta.classe.slice(6, 12),
+        this.risposta.classe.slice(12, 18),
+        this.risposta.classe.slice(18, 24),
+        this.risposta.classe.slice(24, 30),
+      ];
+      console.log(this.file);
     });
   }
 
