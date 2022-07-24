@@ -60,5 +60,6 @@ export class AulaComponent implements OnInit, aula {
       );
     }
   }
+  enter(){}
   ngOnInit() {}
 }
