@@ -56,7 +56,7 @@ export class AulaComponent implements OnInit, aula {
         event.previousContainer.data,
         event.container.data,
         event.previousIndex,
-        event.targetIndex
+        event.currentIndex
       );
     }
   }
