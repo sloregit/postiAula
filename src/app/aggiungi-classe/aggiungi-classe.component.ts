@@ -13,7 +13,7 @@ export class AggiungiClasseComponent implements OnInit {
   @Input() arraySezioni: Array<string>;
   @Input() arrayAnniScolastici: Array<number>;
   arrayStudenti: Array<Studente>;
-  selezionati: Array<Studente>;
+  selezionati: Array<string>;
   apriLista: boolean;
   step: number;
   ok;
@@ -25,7 +25,6 @@ export class AggiungiClasseComponent implements OnInit {
     this.apriLista = false;
     this.step = 0;
     this.arrayAnniScolastici = [1, 2, 3];
-    this.selezionati = new Array(30);
   }
 
   setStep(index: number) {
