@@ -16,8 +16,8 @@ export class AggiungiClasseComponent implements OnInit {
   selezionati: Array<string>;
   apriLista: boolean;
   step: number;
-  ok;
-  res;
+  ok: string;
+  res: string;
   constructor(
     private http: StudentiDBserviceService,
     private classGenerator: GeneraClasseService
