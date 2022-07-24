@@ -18,34 +18,34 @@ export class AulaComponent implements OnInit {
   @Input() arraySezioni: Array<string>;
   @Input() arrayAnniScolastici: Array<number>;
   risposta: Classe;
-  arrayStudenti: Array<Studente>;
-  arrayStudenti2: Array<Studente>;
-  arrayStudenti3: Array<Studente>;
-  arrayStudenti4: Array<Studente>;
-  arrayStudenti5: Array<Studente>;
-  constructor(private service: CercaAuleService) {}
+  aula;
+  constructor(private service: CercaAuleService) {
+    this.aula = [];
+  }
 
   cercaAula(anno, sezione) {
     this.service.cercaAula(1, 'D').subscribe((val) => {
       this.risposta = JSON.parse(val);
-      console.log(val);
+      this.risposta.classe.map((fila, i) => {
+        this.aula[i] = fila;
+      });
+      console.log(this.aula);
+      /*
       this.arrayStudenti = this.risposta.classe.slice(0, 5);
       this.arrayStudenti2 = this.risposta.classe.slice(5, 10);
       this.arrayStudenti3 = this.risposta.classe.slice(10, 15);
       this.arrayStudenti4 = this.risposta.classe.slice(15, 20);
-      this.arrayStudenti5 = this.risposta.classe.slice(20, 25);
+      this.arrayStudenti5 = this.risposta.classe.slice(20, 25);*/
     });
   }
 
   foo() {
-    console.log(this.arrayStudenti2);
-    let conc = this.arrayStudenti.concat(
-      this.arrayStudenti2,
-      this.arrayStudenti3,
-      this.arrayStudenti4,
-      this.arrayStudenti5
+    console.log(this.aula);
+    let _classe = new Classe(
+      this.risposta.anno,
+      this.risposta.sezione,
+      this.aula
     );
-    let _classe = new Classe(this.risposta.anno, this.risposta.sezione, conc);
     this.service.aggiornaAula(_classe).subscribe((res) => {
       console.log(res);
     });

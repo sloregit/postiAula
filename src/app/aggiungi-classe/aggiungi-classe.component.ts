@@ -66,20 +66,14 @@ export class AggiungiClasseComponent implements OnInit {
   //manca un controllo: se la classe esiste già, sostituirla?
   inserisciClasse(anno, sezione) {
     try {
-      const C = this.selezionati.map((elem, i) => {
-        console.log(elem, i);
-      });
-      console.log(C);
       if (anno && sezione && this.selezionati) {
         const classe = new Classe(anno, sezione, this.selezionati);
-
-        /*
         this.classGenerator
           .generaClasse(JSON.stringify(classe))
           .subscribe((res) => {
             console.log(res);
             this.res = res;
-          });*/
+          });
         this.ok =
           'anno: ' +
           classe.anno +

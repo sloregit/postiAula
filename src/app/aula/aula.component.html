@@ -29,7 +29,7 @@
     Cerca
   </button>
 </section>
-<mat-card *ngIf="arrayStudenti">
+<mat-card *ngIf="aula">
   <mat-card-header>
     <mat-card-subtitle
       >Per adesso è bruttino e funziona male... ma c'è
@@ -45,81 +45,65 @@
       <div
         cdkDropList
         cdkDropListOrientation="horizontal"
-        [cdkDropListData]="arrayStudenti"
+        [cdkDropListData]="aula[0]"
         class="example-list"
         (cdkDropListDropped)="drop($event)"
       >
-        <div class="example-box" *ngFor="let studente of arrayStudenti" cdkDrag>
+        <div class="example-box" *ngFor="let studente of aula[0]" cdkDrag>
           <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
 
           {{ studente.nome }}
         </div>
       </div>
       <div
-        *ngIf="arrayStudenti2"
+        *ngIf="aula[1]"
         cdkDropList
         cdkDropListOrientation="horizontal"
-        [cdkDropListData]="arrayStudenti2"
+        [cdkDropListData]="aula[1]"
         class="example-list"
         (cdkDropListDropped)="drop($event)"
       >
-        <div
-          class="example-box"
-          *ngFor="let studente of arrayStudenti2"
-          cdkDrag
-        >
+        <div class="example-box" *ngFor="let studente of aula[1]" cdkDrag>
           <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
           {{ studente.nome }}
         </div>
       </div>
       <div
-        *ngIf="arrayStudenti3"
+        *ngIf="aula[2]"
         cdkDropList
         cdkDropListOrientation="horizontal"
-        [cdkDropListData]="arrayStudenti3"
+        [cdkDropListData]="aula[2]"
         class="example-list"
         (cdkDropListDropped)="drop($event)"
       >
-        <div
-          class="example-box"
-          *ngFor="let studente of arrayStudenti3"
-          cdkDrag
-        >
+        <div class="example-box" *ngFor="let studente of aula[2]" cdkDrag>
           <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
           {{ studente.nome }}
         </div>
       </div>
       <div
-        *ngIf="arrayStudenti4"
+        *ngIf="aula[3]"
         cdkDropList
         cdkDropListOrientation="horizontal"
-        [cdkDropListData]="arrayStudenti4"
+        [cdkDropListData]="aula[3]"
         class="example-list"
         (cdkDropListDropped)="drop($event)"
       >
-        <div
-          class="example-box"
-          *ngFor="let studente of arrayStudenti4"
-          cdkDrag
-        >
+        <div class="example-box" *ngFor="let studente of aula[3]" cdkDrag>
           <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
 
           {{ studente.nome }}
         </div>
       </div>
       <div
-        *ngIf="arrayStudenti5"
+        *ngIf="aula[4]"
         cdkDropList
         cdkDropListOrientation="horizontal"
-        [cdkDropListData]="arrayStudenti5"
+        [cdkDropListData]="aula[4]"
         class="example-list"
         (cdkDropListDropped)="drop($event)"
       >
-        <div
-          class="example-box"
-          *ngFor="let studente of arrayStudenti5"
-          cdkDrag
-        >
+        <div class="example-box" *ngFor="let studente of aula[4]" cdkDrag>
           <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
 
           {{ studente.nome }}
