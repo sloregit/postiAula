@@ -13,7 +13,7 @@ export class AggiungiClasseComponent implements OnInit {
   @Input() arraySezioni: Array<string>;
   @Input() arrayAnniScolastici: Array<number>;
   arrayStudenti: Array<Studente>;
-  selezionati: Array<string>;
+  selezionati: Array<number>;
   apriLista: boolean;
   step: number;
   ok: string;
@@ -67,6 +67,13 @@ export class AggiungiClasseComponent implements OnInit {
   inserisciClasse(anno, sezione) {
     try {
       if (anno && sezione && this.selezionati) {
+        if (this.selezionati.length < 30) {
+          for (let i = this.selezionati.length; i <= 30; i++) {
+            this.selezionati[i] = 0;
+          }
+          console.log(this.selezionati);
+        }
+        console.log(this.selezionati);
         const classe = new Classe(anno, sezione, this.selezionati);
         this.classGenerator
           .generaClasse(JSON.stringify(classe))

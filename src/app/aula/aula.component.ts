@@ -27,7 +27,9 @@ export class AulaComponent implements OnInit, aula {
 
   cercaAula(anno, sezione) {
     this.service.cercaAula(1, 'D').subscribe((val) => {
+      console.log(val);
       this.risposta = JSON.parse(val);
+
       this.risposta.classe.map((fila, i) => {
         this.file[i] = fila;
       });
@@ -60,6 +62,6 @@ export class AulaComponent implements OnInit, aula {
       );
     }
   }
-  enter(){}
+  enter() {}
   ngOnInit() {}
 }
