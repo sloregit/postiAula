@@ -24,9 +24,11 @@ export class AulaComponent implements OnInit {
   arrayStudenti4: Array<Studente>;
   arrayStudenti5: Array<Studente>;
   constructor(private service: CercaAuleService) {}
+
   cercaAula(anno, sezione) {
-    this.service.cercaAula(+anno, sezione).subscribe((val) => {
+    this.service.cercaAula(1, 'D').subscribe((val) => {
       this.risposta = JSON.parse(val);
+      console.log(val);
       this.arrayStudenti = this.risposta.classe.slice(0, 5);
       this.arrayStudenti2 = this.risposta.classe.slice(5, 10);
       this.arrayStudenti3 = this.risposta.classe.slice(10, 15);
@@ -34,6 +36,7 @@ export class AulaComponent implements OnInit {
       this.arrayStudenti5 = this.risposta.classe.slice(20, 25);
     });
   }
+
   foo() {
     console.log(this.arrayStudenti2);
     let conc = this.arrayStudenti.concat(
