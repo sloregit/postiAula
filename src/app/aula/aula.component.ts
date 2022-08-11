@@ -26,7 +26,7 @@ export class AulaComponent implements OnInit, aula {
   }
 
   cercaAula(anno, sezione) {
-    this.service.cercaAula(1, 'D').subscribe((val) => {
+    this.service.cercaAula(anno, sezione).subscribe((val) => {
       console.log(val);
       this.risposta = JSON.parse(val);
 

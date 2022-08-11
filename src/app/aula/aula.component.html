@@ -51,8 +51,8 @@
       >
         <div class="example-box" *ngFor="let studente of file[0]" cdkDrag>
           <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
-
-          {{ studente.nome }}
+          <div class="vuoto" *ngIf="!studente.nome"></div>
+          <div>{{ studente.nome }}</div>
         </div>
       </div>
       <div
@@ -65,7 +65,8 @@
       >
         <div class="example-box" *ngFor="let studente of file[1]" cdkDrag>
           <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
-          {{ studente.nome }}
+          <div class="vuoto" *ngIf="!studente.nome"></div>
+          <div>{{ studente.nome }}</div>
         </div>
       </div>
       <div
@@ -78,7 +79,8 @@
       >
         <div class="example-box" *ngFor="let studente of file[2]" cdkDrag>
           <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
-          {{ studente.nome }}
+          <div class="vuoto" *ngIf="!studente.nome"></div>
+          <div>{{ studente.nome }}</div>
         </div>
       </div>
       <div
@@ -91,8 +93,8 @@
       >
         <div class="example-box" *ngFor="let studente of file[3]" cdkDrag>
           <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
-
-          {{ studente.nome }}
+          <div class="vuoto" *ngIf="!studente.nome"></div>
+          <div>{{ studente.nome }}</div>
         </div>
       </div>
       <div
@@ -105,8 +107,8 @@
       >
         <div class="example-box" *ngFor="let studente of file[4]" cdkDrag>
           <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
-
-          {{ studente.nome }}
+          <div class="vuoto" *ngIf="!studente.nome"></div>
+          <div>{{ studente.nome }}</div>
         </div>
       </div>
     </div>

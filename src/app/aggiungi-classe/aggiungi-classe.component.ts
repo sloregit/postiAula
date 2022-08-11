@@ -71,10 +71,10 @@ export class AggiungiClasseComponent implements OnInit {
           for (let i = this.selezionati.length; i <= 30; i++) {
             this.selezionati[i] = 0;
           }
-          console.log(this.selezionati);
         }
-        console.log(this.selezionati);
         const classe = new Classe(anno, sezione, this.selezionati);
+        console.log(classe);
+
         this.classGenerator
           .generaClasse(JSON.stringify(classe))
           .subscribe((res) => {

@@ -11,19 +11,29 @@
   border-radius: 4px;
   overflow: hidden;
 }
-
+.vuoto {
+  min-block-size: inherit;
+  border-radius: 4px;
+  background-color: antiquewhite;
+  margin: 0;
+}
 .example-box {
-  max-width: max-content;
-  padding: 20px 10px;
+  max-height: 3em;
+  min-height: 3em;
+  text-align: center;
+  max-width: 5em;
+  min-width: 5em;
+  overflow: hidden;
+  padding: 0;
   border: solid 1px #ccc;
   border-radius: 4px;
   color: rgba(0, 0, 0, 0.87);
   align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
+  justify-content: normal;
+  box-sizing: content-box;
   cursor: move;
   background: white;
-  font-size: 14px;
+  font-size: 12px;
   flex-grow: 1;
   flex-basis: 0;
 }
