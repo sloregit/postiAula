@@ -22,6 +22,7 @@ export class AulaComponent implements OnInit, aula {
   @Input() arrayAnniScolastici: Array<number>;
   risposta: Classe;
   file;
+  arr;
   todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
 
   done = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
@@ -33,7 +34,7 @@ export class AulaComponent implements OnInit, aula {
     this.service.cercaAula(anno, sezione).subscribe((val) => {
       console.log(val);
       this.risposta = JSON.parse(val);
-
+      this.arr = this.risposta.classe;
       this.risposta.classe.map((fila, i) => {
         this.file[i] = fila;
       });
