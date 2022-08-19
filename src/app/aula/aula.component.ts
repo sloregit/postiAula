@@ -22,6 +22,9 @@ export class AulaComponent implements OnInit, aula {
   @Input() arrayAnniScolastici: Array<number>;
   risposta: Classe;
   file;
+  todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
+
+  done = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
   constructor(private service: CercaAuleService) {
     this.file = [];
   }
@@ -47,7 +50,7 @@ export class AulaComponent implements OnInit, aula {
       console.log(res);
     });
   }
-  drop(event: CdkDragDrop<Studente[]>) {
+  drop(event: CdkDragDrop<any>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,
