@@ -30,6 +30,7 @@ import { GeneraMatricolaService } from './aggiungi-studente/genera-matricola.ser
 import { GeneraClasseService } from './aggiungi-classe/genera-classe.service';
 import { CercaAuleService } from './aula/cerca-aule.service';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
   imports: [
@@ -52,6 +53,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatDialogModule,
     MatExpansionModule,
     DragDropModule,
+    MatGridListModule,
   ],
   declarations: [
     AppComponent,

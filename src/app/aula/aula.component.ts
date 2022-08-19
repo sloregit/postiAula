@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CercaAuleService } from './cerca-aule.service';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { Classe, Studente } from '../shared-class';
 import {
   CdkDragDrop,
