@@ -14,7 +14,7 @@
 .vuoto {
   min-block-size: inherit;
   border-radius: 4px;
-  background-color: antiquewhite;
+  background-color: rgb(228, 215, 238);
   margin: 0;
 }
 .example-box {
