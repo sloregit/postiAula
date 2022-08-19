@@ -66,3 +66,6 @@
 mat-grid-tile {
   background: lightblue;
 }
+mat-grid-list {
+  background-color: blue;
+}

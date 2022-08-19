@@ -22,7 +22,7 @@ export class AulaComponent implements OnInit, aula {
   @Input() arrayAnniScolastici: Array<number>;
   risposta: Classe;
   file;
-  arr;
+  studenti;
   todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
 
   done = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
@@ -34,7 +34,8 @@ export class AulaComponent implements OnInit, aula {
     this.service.cercaAula(anno, sezione).subscribe((val) => {
       console.log(val);
       this.risposta = JSON.parse(val);
-      this.arr = this.risposta.classe;
+      this.studenti = this.risposta.classe;
+      console.log(this.studenti);
       this.risposta.classe.map((fila, i) => {
         this.file[i] = fila;
       });
@@ -51,7 +52,10 @@ export class AulaComponent implements OnInit, aula {
       console.log(res);
     });
   }
-  drop(event: CdkDragDrop<any>) {
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.studenti, event.previousIndex, event.currentIndex);
+  }
+  drop2(event: CdkDragDrop<any>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,

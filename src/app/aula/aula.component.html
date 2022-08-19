@@ -41,41 +41,16 @@
     >
   </mat-card-header>
 
-  <div>
-    <div cdkDropListGroup>
-      <div class="example-container">
-        <h2>To do</h2>
-
-        <div
-          cdkDropList
-          [cdkDropListData]="todo"
-          class="example-list"
-          (cdkDropListDropped)="drop($event)"
-        >
-          <div class="example-box" *ngFor="let item of todo" cdkDrag>
-            {{ item }}
-          </div>
-        </div>
-      </div>
-
-      <div class="example-container">
-        <h2>Done</h2>
-
-        <div
-          cdkDropList
-          [cdkDropListData]="done"
-          class="example-list"
-          (cdkDropListDropped)="drop($event)"
-        >
-          <div class="example-box" *ngFor="let item of done" cdkDrag>
-            {{ item }}
-          </div>
-        </div>
-      </div>
-    </div>
-    <mat-grid-list cols="5" row="5" rowHeight="2:1" cdkDropListGroup>
-      <mat-grid-tile *ngFor="let i of arr"></mat-grid-tile>
-    </mat-grid-list>
+  <div
+    cdkDropListGroup
+    cdkDropList
+    [cdkDropListData]="studenti"
+    (cdkDropListDropped)="drop($event)"
+  >
+    <mat-grid-tile *ngFor="let i of studenti; let j = index" cdkDrag>
+      <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+      {{ studenti[j].nome }}</mat-grid-tile
+    >
   </div>
 
   <button mat-raised-button (click)="foo()">Salva(ma funziona male)</button>
